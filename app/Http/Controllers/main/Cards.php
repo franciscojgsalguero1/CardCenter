@@ -9,12 +9,13 @@ use App\Card;
 
 class Cards extends Controller {
 	private $json = "application/json";
+	private $html = "text/html";
 
     public function test() {
     	$cards = Card::all();
 
     	$response = response()->view('test', ['data' => $cards], 200);
-    	$response->header("Content-Type", "text/html");
+    	$response->header("Content-Type", $this->html);
     	return $response;
     }
 }

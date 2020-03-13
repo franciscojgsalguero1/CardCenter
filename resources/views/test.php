@@ -47,7 +47,7 @@
             		echo "<td>{$item->expansion}</td>";
             		echo "<td>{$item->number}</td>";
             		echo "<td>{$item->rarity}</td>";
-            		echo "<td>{$item->src}</td>";
+            		echo "<td><img src='{$item->src}'</td>";
         		echo "</tr>";
             }
     }
