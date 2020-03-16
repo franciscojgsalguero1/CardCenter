@@ -42,7 +42,7 @@ class CardController extends Controller {
         $card = Card::find($id);
         $card->delete();
 
-        return $this->sendMessage("message", "The product with the id $card->id has successfully been deleted.");
+        return $this->sendMessage("message", "The card with the id $card->id has successfully been deleted.");
     }
 
     private function sendMessage($key, $message) {
