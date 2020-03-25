@@ -45,6 +45,11 @@ class CardController extends Controller {
         return $this->sendMessage("message", "The card with the id $card->id has successfully been deleted.");
     }
 
+    public function restore($id) {
+        $card = Card::withTrashed()->find($id)->restore();
+        return $this->sendMessage("message", "The card with the id $id has successfully been restored.");
+    }
+
     private function sendMessage($key, $message) {
         return response()->json([
             'error' => false,

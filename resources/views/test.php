@@ -36,20 +36,18 @@
             echo "<tr>";
                 echo "<th>Name</th>";
                 echo "<th>Expansion</th>";
-                echo "<th>Number</th>";
                 echo "<th>Rarity</th>";
                 echo "<th>Src</th>";
             echo "</tr>";
 
-            foreach ($data as $item) {
-            	echo "<tr>";
-            		echo "<td>{$item->name}</td>";
-            		echo "<td>{$item->expansion}</td>";
-            		echo "<td>{$item->number}</td>";
-            		echo "<td>{$item->rarity}</td>";
-            		echo "<td><img src='{$item->src}'</td>";
-        		echo "</tr>";
-            }
+        foreach ($data as $item) {
+        	echo "<tr>";
+        		echo "<td>{$item->name}</td>";
+        		echo "<td>{$item->expansion}-{$item->number}</td>";
+        		echo "<td>{$item->rarity}</td>";
+        		echo "<td><img width='100' height='200' src='{$item->src}'</td>";
+    		echo "</tr>";
+        }
     }
 
 	include_once "resources/layout_footer.php";
