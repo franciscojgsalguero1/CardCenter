@@ -1,6 +1,6 @@
 ## Project
-/public/hot
-/public/storage
+/index/hot
+/index/storage
 /storage/*.key
 /vendor
 .env
