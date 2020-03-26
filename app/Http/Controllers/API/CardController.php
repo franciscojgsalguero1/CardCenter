@@ -32,6 +32,9 @@ class CardController extends Controller {
         $card->expansion = $request->input('expansion');
         $card->number = $request->input('number');
         $card->rarity = $request->input('rarity');
+        $card->game = $request->input('game');
+        $card->quantity = $this->getQuantity();
+        $card->price_from = $this->getPriceFrom();
         $card->src = $request->input('src');
         $card->save();
 

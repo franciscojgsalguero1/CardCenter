@@ -13,15 +13,17 @@ class CreateCardsTable extends Migration
      */
     public function up()
     {
-       Schema::create('cards', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('cards', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
             $table->string('expansion');
             $table->integer('number');
             $table->string('rarity');
+            $table->string('game');
+            $table->integer('quantity');
+            $table->float('price_from');
             $table->string('src');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

@@ -13,6 +13,9 @@ class Card extends Model {
     	'expansion',
     	'number',
     	'rarity',
-    	'src',
+    	'game',
+    	'quantity',
+    	'price_from',
+    	'src'
     ];
 }
