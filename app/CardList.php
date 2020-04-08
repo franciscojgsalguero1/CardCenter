@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Lcard extends Model {
+class List extends Model {
     use SoftDeletes;
 
     protected $fillable = [

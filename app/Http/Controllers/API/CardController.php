@@ -28,11 +28,6 @@ class CardController extends Controller {
     public function update(Request $request, $id) {
         $card = Card::find($id);
 
-        $card->name = $request->input('name');
-        $card->expansion = $request->input('expansion');
-        $card->number = $request->input('number');
-        $card->rarity = $request->input('rarity');
-        $card->game = $request->input('game');
         $card->quantity = $this->getQuantity();
         $card->price_from = $this->getPriceFrom();
         $card->src = $request->input('src');

@@ -19,7 +19,7 @@
             		echo "<td>{$item->expansion}-{$item->number}</td>";
             		echo "<td>{$item->rarity}</td>";
                     echo "<td>{$item->game}</td>";
-            		echo "<td><img src='{$item->src}' height=200 width=100</td>";
+            		echo "<td><img src='{$item->src}' height=200 width=160</td>";
         		echo "</tr>";
             }
     }
