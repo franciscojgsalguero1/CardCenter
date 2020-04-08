@@ -12,13 +12,15 @@ class User extends Authenticatable {
     use SoftDeletes;
 
     protected $fillable = [
+        'username',
         'name',
-        'full_name',
+        'surname',
         'phone_number',
         'email',
         'password',
         'balance',
         'street',
+        'street_num',
         'city',
         'post_code',
         'country',
