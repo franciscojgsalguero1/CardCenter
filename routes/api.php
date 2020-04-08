@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/* Final */
 Route::group(["namespace" => "API"], function() {
 	Route::apiResource('cards', 'CardController');
 	Route::get('cards/restore/{id}', 'CardController@restore');
