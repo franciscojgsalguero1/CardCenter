@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 /* Final */
 Route::group(["namespace" => "API"], function() {
-	//Route::apiResource('cards', 'CardController');
+	Route::apiResource('cards', 'CardController');
 	Route::post('cards/store/', 'CardController@store');
 	Route::get('cards/restore/{id}', 'CardController@restore');
 });

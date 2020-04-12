@@ -9,20 +9,14 @@ use App\CardList as List;
 class ListController extends Controller {
     public function index() {
         $list = List::all();
-
-        return $this->sendMessage("cards", $list);
     }
 
     public function store(Request $request) {
         $list = List::create($request->all());
-
-        return $this->sendMessage("cards", $list);
     }
 
     public function show($id) {
         $list = List::find($id);
-
-        return $this->sendMessage("cards", $list);
     }
 
     public function update(Request $request, $id) {
@@ -41,26 +35,14 @@ class ListController extends Controller {
         $list->playset = $request->input('playset');
         $list->src = $request->input('src');
         $list->save();
-
-        return $this->sendMessage("cards", $list);
     }
 
     public function destroy($id) {
         $list = List::find($id);
         $list->delete();
-
-        return $this->sendMessage("message", "The card with the id $list->id has successfully been deleted.");
     }
 
     public function restore($id) {
         $list = List::withTrashed()->find($id)->restore();
-        return $this->sendMessage("message", "The card with the id $id has successfully been restored.");
-    }
-
-    private function sendMessage($key, $message) {
-        return response()->json([
-            'error' => false,
-            $key => $message,
-        ], 200);
     }
 }
