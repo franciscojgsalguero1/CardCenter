@@ -39,6 +39,7 @@
                             </div>
                         </div>
 
+
                         <div class="form-group row">
                             <label for="street" class="col-md-4 col-form-label text-md-right">{{ __('Street') }}</label>
                             <div class="col-md-6">
@@ -47,7 +48,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="street_num" class="col-md-4 col-form-label text-md-right">{{ __('House Number') }}</label>
+                            <label for="street_num" class="col-md-4 col-form-label text-md-right">{{ __('Street Number') }}</label>
                             <div class="col-md-6">
                                 <input id="street_num" type="text" class="form-control" name="street_num" required placeholder="Street Number">
                             </div>

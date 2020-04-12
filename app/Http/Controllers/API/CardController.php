@@ -16,6 +16,8 @@ class CardController extends Controller {
     public function store(Request $request) {
         $card = Card::create($request->all());
 
+        //echo $request->title;
+
         return $this->sendMessage("card", $card);
     }
 
@@ -53,5 +55,9 @@ class CardController extends Controller {
             'error' => false,
             $key => $message,
         ], 200);
+    }
+
+    public function test() {
+        return response()->view('testing', ['cards' => Card::all()])->header("Accept", "application/json");
     }
 }
