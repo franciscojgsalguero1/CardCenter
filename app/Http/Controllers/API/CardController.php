@@ -37,6 +37,6 @@ class CardController extends Controller {
     }
 
     public function test() {
-        return response()->view('testing', ['cards' => Card::all()])->header("Accept", "application/json");
+        return response()->view('testing', ['cards' => Card::all()]);
     }
 }

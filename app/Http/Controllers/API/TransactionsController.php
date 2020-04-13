@@ -4,23 +4,23 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Transactions;
+use App\Transactions as Tx;
 
 class TransactionsController extends Controller {
     public function index() {
-        $transaction = Transactions::all();
+        $transaction = Tx::all();
     }
 
     public function store(Request $request) {
-        $transaction = Transactions::create($request->all());
+        $transaction = Tx::create($request->all());
     }
 
     public function show($id) {
-        $transaction = Transactions::find($id);
+        $transaction = Tx::find($id);
     }
 
     public function update(Request $request, $id) {
-        $transaction = Transactions::find($id);
+        $transaction = Tx::find($id);
 
         $transaction->status = $this->getStatus();
         $transaction->certified = $this->isCertified();
@@ -32,11 +32,11 @@ class TransactionsController extends Controller {
     }
 
     public function destroy($id) {
-        $transaction = Transactions::find($id);
+        $transaction = Tx::find($id);
         $transaction->delete();
     }
 
     public function restore($id) {
-        $transaction = Transactions::withTrashed()->find($id)->restore();
+        $transaction = Tx::withTrashed()->find($id)->restore();
     }
 }

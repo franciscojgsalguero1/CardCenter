@@ -54,15 +54,13 @@
                             </div>
                         </div>
 
-                    <!--
                         <div class="form-group row">
                             <label for="post_code" class="col-md-4 col-form-label text-md-right">{{ __('Post Code') }}</label>
                             <div class="col-md-6">
                                 <input id="post_code" type="text" class="form-control" name="post_code" required placeholder="Post Code">
                             </div>
                         </div>
-                    -->
-
+                        
                         <div class="form-group row">
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
                             <div class="col-md-6">

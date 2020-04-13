@@ -19,7 +19,6 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', 'API\CardController@test');
-
 Route::get('/cards', "main\Test@test");
 
 
