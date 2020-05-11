@@ -10,7 +10,7 @@
 #Homestead.yaml (unused)
 
 ## Node.js & Yarn
-resources/sass/node_modules
+/node_modules
 npm-debug.log
 yarn-error.log
 

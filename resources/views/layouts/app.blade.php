@@ -9,8 +9,16 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.0.js"
+      integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+      crossorigin="anonymous"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <!-- Scripts -->
-    <!--<script src="{{ asset('../resources/js/bootstrap.js') }}" defer></script>-->
+    <script src="{{ asset('../resources/js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/test', 'API\CardController@test');
-Route::get('/cards', "main\Test@test");
+Route::get('/view', 'main\Test@view');
+Route::get('/cards', "main\Test@cards");
 
 
 /* Final */
 Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

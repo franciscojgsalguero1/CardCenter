@@ -24,8 +24,8 @@ class CardController extends Controller {
 
         $card->quantity = $this->getQuantity();
         $card->price_from = $this->getPriceFrom();
-        $card->src = $request->input('src');
-        $card->save();    }
+        $card->save();
+    }
 
     public function destroy($id) {
         $card = Card::find($id);
@@ -34,9 +34,5 @@ class CardController extends Controller {
 
     public function restore($id) {
         $card = Card::withTrashed()->find($id)->restore();
-    }
-
-    public function test() {
-        return response()->view('testing', ['cards' => Card::all()]);
     }
 }

@@ -6,7 +6,7 @@
 
     <h1>Create Card</h1>
 
-    <form action="{{url('api\cards\store')}}" method="post">
+    <form action="{{url('api\cards')}}" method="post">
 
         <input type="text" name="name" placeholder="Enter title">
         <input type="text" name="expansion" placeholder="Enter expansion">

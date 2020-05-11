@@ -22,7 +22,7 @@ class ListController extends Controller {
     public function update(Request $request, $id) {
         $list = List::find($id);
 
-        $list->seller = $request->input('seller');
+        $list->seller = $this->getSeller();
         $list->language = $request->input('language');
         $list->price = $request->input('price');
         $list->quantity = $request->input('quantity');
