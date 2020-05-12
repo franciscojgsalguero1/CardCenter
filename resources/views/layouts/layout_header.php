@@ -10,12 +10,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-    <!-- Personal files -->
-    <script src="javascript/main.js"></script>
-    <script src="javascript/delete_item.js"></script>
-    <script src="javascript/delete_pack.js"></script>
-    <script src="javascript/delete_contact.js"></script>
-    <link rel="stylesheet" href="styles/layout.css">
 </head>
 <body>
     <div class="container">

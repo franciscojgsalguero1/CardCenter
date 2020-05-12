@@ -6,19 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Card;
 
-class Test extends Controller {
+class PrimaryController extends Controller {
 	private $html = "text/html";
 
-    public function cards() {
+    public function view() {
     	$cards = Card::all();
 
-    	$response = response()->view('test', ['data' => $cards], 200);
+    	$response = response()->view('view_cards', ['data' => $cards], 200);
     	$response->header("Content-Type", $this->html);
 
     	return $response;
     }
 
-    public function view() {
-        return response()->view('testing', ['cards' => Card::all()]);
+    public function cards() {
+        return response()->view('add_cards', ['cards' => Card::all()]);
     }
 }
