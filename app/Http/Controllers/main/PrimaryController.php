@@ -8,6 +8,7 @@ use App\Card;
 
 class PrimaryController extends Controller {
 	private $html = "text/html";
+    private $json = "javascript/json";
 
     public function view() {
     	$cards = Card::all();
