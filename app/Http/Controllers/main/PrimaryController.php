@@ -19,7 +19,15 @@ class PrimaryController extends Controller {
     	return $response;
     }
 
-    public function cards() {
+    public function add_cards() {
         return response()->view('add_cards', ['cards' => Card::all()]);
+    }
+
+    public function send() {
+        return response()->view('send', ['cards' => Card::all()]);
+    }
+
+    public function test($id) {
+        return response()->view('test', ['card' => Card::find($id)]);
     }
 }
