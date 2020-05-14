@@ -1,0 +1,14 @@
+1. crear cuentas de "admin" -> campo (tinyint) en tabla users.
+2. hacer que la pagina /add/ solo se pueda editar por admin.
+3. add buttons to view_one card (-1, +1, edit, delete).
+4. edit in view_one card.
+
+
+
+??. Transactions.
+??. Home page.
+??. Login with username instead of email.
+??. Table with expansions (with foreign key relation).
+
+
+***. Visual.

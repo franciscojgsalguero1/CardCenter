@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\CardList;
+use App\Card;
 
 class ListController extends Controller {
     public function index() {
@@ -13,6 +14,31 @@ class ListController extends Controller {
 
     public function store(Request $request) {
         $list = CardList::create($request->all());
+
+        $this->updateCardQuantity($request);
+        $this->updateCardPriceFrom($request);
+    }
+
+    private function updateCardQuantity(Request $request) {
+        $name = $request->input('name');
+        $new_qtty = $request->input('quantity');
+
+        $id = Card::where('name', $name)->get('id');
+        $card = Card::find($id[0]['id']);
+        $card->quantity = $card->quantity + $new_qtty;
+        $card->save();
+    }
+
+    private function updateCardPriceFrom(Request $request) {
+        $name = $request->input('name');
+        $new_price = $request->input('price');
+
+        $id = Card::where('name', $name)->get('id');
+        $card = Card::find($id[0]['id']);
+        if ($card->price_from !== 0.00 && $card->price_from > $new_price) {
+            $card->price_from = $new_price;
+            $card->save();
+        }
     }
 
     public function show($id) {

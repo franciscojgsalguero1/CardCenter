@@ -21,9 +21,6 @@ class CardController extends Controller {
 
     public function update(Request $request, $id) {
         $card = Card::find($id);
-
-        $card->quantity = $this->getQuantity();
-        $card->price_from = $this->getPriceFrom();
         $card->save();
     }
 
