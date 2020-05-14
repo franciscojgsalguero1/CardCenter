@@ -4,8 +4,8 @@
 4. edit in view_one card.
 
 
-
 ??. Transactions.
+??. Subtract bought quantity and if price from is the same as bought, recalculate price from.
 ??. Home page.
 ??. Login with username instead of email.
 ??. Table with expansions (with foreign key relation).

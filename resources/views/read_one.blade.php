@@ -76,7 +76,7 @@
 				@auth
 					@if ($item->seller == Auth::user()->username)
 						<tr>
-							<td>TEST{{$item->seller}}</td>
+							<td>{{$item->seller}}</td>
 							<td>{{$item->condition}} - {{$item->language}} - {{$item->fullart}} - {{$item->foil}} - {{$item->signed}} - {{$item->uber}} - {{$item->playset}} - {{$item->comment}}</td>
 							<td>{{$item->price}} - {{$item->quantity}} <!-- EDIT --></td>
 						</tr>
