@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class List extends Model {
+class CardList extends Model {
     use SoftDeletes;
 
     protected $fillable = [
@@ -20,7 +20,6 @@ class List extends Model {
         'foil',
         'signed',
         'uber',
-        'playset',
-        'src'
+        'playset'
     ];
 }

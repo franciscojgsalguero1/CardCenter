@@ -4,23 +4,23 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\CardList as List;
+use App\CardList;
 
 class ListController extends Controller {
     public function index() {
-        $list = List::all();
+        $list = CardList::all();
     }
 
     public function store(Request $request) {
-        $list = List::create($request->all());
+        $list = CardList::create($request->all());
     }
 
     public function show($id) {
-        $list = List::find($id);
+        $list = CardList::find($id);
     }
 
     public function update(Request $request, $id) {
-        $list = List::find($id);
+        $list = CardList::find($id);
 
         $list->seller = $this->getSeller();
         $list->language = $request->input('language');
@@ -33,16 +33,15 @@ class ListController extends Controller {
         $list->signed = $request->input('signed');
         $list->uber = $request->input('uber');
         $list->playset = $request->input('playset');
-        $list->src = $request->input('src');
         $list->save();
     }
 
     public function destroy($id) {
-        $list = List::find($id);
+        $list = CardList::find($id);
         $list->delete();
     }
 
     public function restore($id) {
-        $list = List::withTrashed()->find($id)->restore();
+        $list = CardList::withTrashed()->find($id)->restore();
     }
 }
