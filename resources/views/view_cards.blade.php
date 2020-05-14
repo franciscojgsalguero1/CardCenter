@@ -9,15 +9,17 @@
                 <th>Rarity</th>
                 <th>Game</th>
                 <th>Src</th>
+                <th>borrar</th>
             </tr>
 
             @foreach ($data as $item)
                 <tr>
-                    <td><a href="{{url('test/'.$item->id)}}">{{$item->name}}</a></td>
+                    <td><a href="{{url('view/'.$item->id)}}">{{$item->name}}</a></td>
                     <td>{{$item->expansion}}-{{$item->number}}</td>
                     <td>{{$item->rarity}}</td>
                     <td>{{$item->game}}</td>
                     <td><img src='{{$item->src}}' height=200 width=160></td>
+                    <td><button><a href="{{url('delete/'.$item->id)}}">del</a></button></td>
                 </tr>
             @endforeach
         </table>

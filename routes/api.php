@@ -19,6 +19,6 @@ Route::group(["namespace" => "API"], function() {
 });
 
 Route::group(["namespace" => "API"], function() {
-	Route::apiResource('clists', 'TransactionsController');
-	Route::get('clists/restore/{id}', 'TransactionsController@restore');
+	Route::apiResource('clist', 'ListController');
+	Route::get('clist/restore/{id}', 'ListController@restore');
 });

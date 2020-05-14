@@ -8,8 +8,8 @@ Route::get('/', function () {
 
 Route::get('/view', 'main\PrimaryController@view');
 Route::get('/add', "main\PrimaryController@add_cards");
-Route::get('/send', "main\PrimaryController@send");
-Route::get('/test/{id}', "main\PrimaryController@test");
+Route::get('/view/{id}', "main\PrimaryController@read_one");
+Route::get('/delete/{id}', "main\PrimaryController@delete");
 
 
 /* Final */
