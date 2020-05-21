@@ -7,17 +7,16 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/view/', 'main\PrimaryController@view');
+Route::get('/view/', 'main\CardController@view');
 
 /* Final */
 Auth::routes();
 
 /* Cards */
-Route::get('/add/', "main\PrimaryController@add_cards");
-Route::get('/view/{id}/', "main\PrimaryController@read_one");
-Route::get('/delete/{id}/', "main\PrimaryController@delete");
+Route::get('/add/', "main\CardController@add_cards");
 
 /* Card List */
-
+Route::get('/view/{id}/', "main\ListController@read_one");
+Route::get('/delete/{id}/', "main\ListController@deleteList");
 
 /* Transactions */

@@ -8,17 +8,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 /* Final */
-Route::group(["namespace" => "API"], function() {
+Route::group(["namespace" => "main"], function() {
 	Route::apiResource('cards', 'CardController');
 	Route::get('cards/restore/{id}', 'CardController@restore');
 });
 
-Route::group(["namespace" => "API"], function() {
+Route::group(["namespace" => "main"], function() {
 	Route::apiResource('transactions', 'TransactionsController');
 	Route::get('transactions/restore/{id}', 'TransactionsController@restore');
 });
 
-Route::group(["namespace" => "API"], function() {
+Route::group(["namespace" => "main"], function() {
 	Route::apiResource('clist', 'ListController');
 	Route::get('clist/restore/{id}', 'ListController@restore');
 });

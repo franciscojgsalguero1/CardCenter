@@ -6,20 +6,22 @@
             <tr>
                 <th>Name</th>
                 <th>Expansion</th>
+                <th>Number</th>
                 <th>Rarity</th>
+                <th>Quantity</th>
+                <th>Price From</th>
                 <th>Game</th>
-                <th>Src</th>
-                <th>borrar</th>
             </tr>
 
             @foreach ($data as $item)
                 <tr>
                     <td><a href="{{url('view/'.$item->id)}}">{{$item->name}}</a></td>
-                    <td>{{$item->expansion}}-{{$item->number}}</td>
+                    <td>{{$item->expansion}}</td>
+                    <td>{{$item->number}}</td>
                     <td>{{$item->rarity}}</td>
+                    <td>{{$item->quantity}}</td>
+                    <td>{{$item->price_from}}</td>
                     <td>{{$item->game}}</td>
-                    <td><img src='{{$item->src}}' height=200 width=160></td>
-                    <td><button><a href="{{url('delete/'.$item->id)}}">del</a></button></td>
                 </tr>
             @endforeach
         </table>
