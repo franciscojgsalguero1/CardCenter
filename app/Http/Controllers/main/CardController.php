@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\main;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Card;
 
 class CardController extends Controller {
+    private $html = "text/html";
+    private $json = "javascript/json";
+    
     public function index() {
         $card = Card::all();
     }
@@ -31,5 +34,18 @@ class CardController extends Controller {
 
     public function restore($id) {
         $card = Card::withTrashed()->find($id)->restore();
+    }
+
+    public function view() {
+        $cards = Card::all();
+
+        $response = response()->view('view_cards', ['data' => $cards], 200);
+        $response->header("Content-Type", $this->html);
+
+        return $response;
+    }
+
+    public function add_cards() {
+        return response()->view('add_cards', ['cards' => Card::all()]);
     }
 }

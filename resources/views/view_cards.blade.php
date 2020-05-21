@@ -19,7 +19,6 @@
                     <td>{{$item->rarity}}</td>
                     <td>{{$item->game}}</td>
                     <td><img src='{{$item->src}}' height=200 width=160></td>
-                    <td><button><a href="{{url('delete/'.$item->id)}}">del</a></button></td>
                 </tr>
             @endforeach
         </table>
