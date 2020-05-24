@@ -1,26 +1,93 @@
 @extends('layouts.app')
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+<style>
+.flex-container {
+  display: flex;
+  align-items: stretch;
+  margin-left: 20%;
+}
+.flex-container > div {
+  background-color: ;
+  color: white;
+  text-align: center;
+}
+#info{
+	margin-left: 10%;
+}
+#tabs{
+	margin-left: 20%;
+	margin-right: 80%;
+	color: white;
+}
+th{
+    background-color: #012169;
+    color: white;
+}
+h2, h1, label{
+	text-align: center;
+	color: black;
+}
+#info-card{
+	font-size: 28px;
+}
+.tooltiptext {
+  visibility: hidden;
+  display: none;
+  }
+#cosa:hover .tooltiptext {
+	z-index: 1;
+  visibility: visible;
+  display: block;
+  opacity: 1;
+}
+#flags{
+	width: 25px;
+	height: 25px;
+}
+</style>
 @section('content')
-	<h1>{{$card->name}}</h1>
-	<img src="{{$card->src}}" height="100" width="60">
 
-	<div class="w3-bar w3-black">
-		<button class="w3-bar-item w3-button" onclick="openTab('info')">Information</button>
+<h1>{{$card->name}} </h1>
+	<div class="w3-bar w3-white" id="tabs">
+		<button class="w3-bar-item w3-button" onclick="openTab('info')">Information <i class="fas fa-info-circle"></i></button>
 		@auth
-			<button class="w3-bar-item w3-button" onclick="openTab('sell')">Sell</button>
+			<button class="w3-bar-item w3-button" onclick="openTab('sell')">Sell <i class="fas fa-shopping-cart"></i></button>
 		@endauth
 	</div>
 
-	<div id="info" class="w3-container city">
-		<h2>Printed in: {{$card->expansion}}</h2>
-		<h2>Number: {{$card->number}}</h2>
-		<h2>Rarity: {{$card->rarity}}</h2>
-		<h2>Quantity: {{$card->quantity}}</h2>
-		<h2>Price From: {{$card->price_from}}</h2>
+	<div class="flex-container">
+		
+	<div>
+		<img src="{{$card->src}}" height="200" width="160">
 	</div>
 
+	<div id="info">
+		<table id="info-card">
+			<tr>
+				<td> Printed in:</td>
+				<td> {{$card->expansion}}</td>
+			</tr>
+			<tr>
+				<td> Number:</td>
+				<td> {{$card->number}}</td>
+			</tr>
+			<tr>
+				<td>Quantity:</td>
+				<td>{{$card->quantity}}<td>
+			</tr>
+			<tr>
+				<td>Raraity:</td>
+				<td>{{$card->rarity}}</td>
+			</tr>
+			<tr>
+				<td>Price from:</td>
+				<td>{{$card->price_from}}</td>
+			</tr>
+	</table>
+	</div>
+</div>
 	@auth
+	<div class="flex-container">
 		<div id="sell" class="w3-container city" style="display:none">
 			<form action="{{url('api/clist')}}" method="post">
 		    	<input type="hidden" name="name" value="{{$card->name}}">
@@ -65,21 +132,54 @@
 		        <input type="submit" name="submit">
 		    </form>
 		</div>
+	</div>
 	@endauth
-
+	<br>
+	<div class="flex-container">
+		<div>
 	@if (count($clist) >= 1)
-		<table>
+		<table class='table table-hover table-responsive table-bordered'>
 			<th>Seller</th>
 			<th>Product Information</th>
 			<th>Offer</th>
 			@foreach ($clist as $item)
+				@if($item->language == "English")
+					@php
+						$salida = "https://www.countryflags.io/gb/flat/64.png";
+					@endphp
+				@elseif($item->language == "German")
+					@php
+						$salida = "https://www.countryflags.io/be/flat/64.png";
+					@endphp
+
+				@elseif($item->language == "French")
+					@php
+						$salida = "https://www.countryflags.io/fr/flat/64.png";
+					@endphp
+				@elseif($item->language == "Spanish")
+					@php
+						$salida = "https://www.countryflags.io/es/flat/64.png";
+					@endphp
+				@elseif($item->language == "Itailan")
+					@php
+						$salida = "https://www.countryflags.io/it/flat/64.png";
+					@endphp
+				@elseif($item->language == "Japanese")
+					@php
+						$salida = "https://www.countryflags.io/jp/flat/64.png";
+					@endphp
+				@else
+					@php
+						$salida = "https://www.countryflags.io/cn/flat/64.png";
+					@endphp
+				@endif			
 				<tr>
 					@auth
 						@if ($item->seller == Auth::user()->username)
 							<td>{{$item->seller}}</td>
-							<td>{{$item->condition}} - {{$item->language}} - {{$item->fullart}} - {{$item->foil}} - {{$item->signed}} - {{$item->uber}} - {{$item->playset}} - {{$item->comment}}</td>
+							<td>{{$item->condition}} - <img id="flags"  src="{{$salida}}"> - {{$item->fullart}} - @if ($item->foil != 0)<i class="fas fa-star" id="cosa"><span class="tooltiptext">foil</span></i>@else &nbsp @endif - {{$item->signed}} - {{$item->uber}} - {{$item->playset}} - {{$item->comment}}</td>
 							<td>
-								{{$item->price}} - {{$item->quantity}} - <button onclick="showEdit({{$item->id}})">EDIT</button><button><a href="{{url('delete/'.$item->id)}}">DELETE</a></button>
+								{{$item->price}}€ - {{$item->quantity}} - <button class="w3-button w3-circle" onclick="showEdit({{$item->id}})"><i class="fas fa-edit"> </i></button><button class="w3-button w3-circle"><a href="{{url('delete/'.$item->id)}}"><i class="fas fa-trash-alt"></i></a></button><button class="w3-button w3-circle"><i class="fas fa-cart-plus"></i></button>
 								<div style="display:none;" id="{{'editDiv'.$item->id}}">
 									<form action="{{url('api/clist/'.$item->id)}}" method="post">
       									{{ method_field('PUT') }}
@@ -135,20 +235,25 @@
 					@auth
 						@if ($item->seller != Auth::user()->username)
 							<td>{{$item->seller}}</td>
-							<td>{{$item->condition}} - {{$item->language}} - {{$item->fullart}} - {{$item->foil}} - {{$item->signed}} - {{$item->uber}} - {{$item->playset}} - {{$item->comment}}</td>
-							<td>{{$item->price}} - {{$item->quantity}}</td>
+							<td>{{$item->condition}} - <img id="flags"  src="{{$salida}}"> - {{$item->fullart}} - @if ($item->foil != 0)<i class="fas fa-star" id="cosa"><span class="tooltiptext">foil</span></i>@else &nbsp @endif - {{$item->signed}} - {{$item->uber}} - {{$item->playset}} - {{$item->comment}}</td>
+							<td>{{$item->price}}€ - {{$item->quantity}}</td>
 						@endif
 					@endauth
 					@guest
 						<td>{{$item->seller}}</td>
-						<td>{{$item->condition}} - {{$item->language}} - {{$item->fullart}} - {{$item->foil}} - {{$item->signed}} - {{$item->uber}} - {{$item->playset}} - {{$item->comment}}</td>
-						<td>{{$item->price}} - {{$item->quantity}}</td>
+						<td>{{$item->condition}} - <img id="flags" src="{{$salida}}">  {{$item->fullart}} - @if ($item->foil != 0)<i class="fas fa-star" id="cosa"><span class="tooltiptext">foil</span></i>@else &nbsp @endif - {{$item->signed}} - {{$item->uber}} - {{$item->playset}} - {{$item->comment}}</td>
+						<td>{{$item->price}}€ - {{$item->quantity}}</td>
 					@endguest
 				</tr>
+				@if ($item->foil != 0)<i class="fas fa-star"></i>@endif
+				
+	    		
 	    	@endforeach
-	    </table>
+	    </table>	    
 	@endif
-
+</div>
+</div>
+<i class="ae flag"></i>
 	<script>
 		function showEdit($id) {
 			if (document.getElementById("editDiv"+$id).style.display == "block") {
