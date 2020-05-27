@@ -7,6 +7,7 @@
 ??. Table with expansions (with foreign key relation).
 ??. Emails.
 ??. Shopping cart (ALSO IN MYSQL).
-
+??. redirecciones
+??. pag user (change userpass)
 
 ***. Visual.

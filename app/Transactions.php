@@ -11,9 +11,11 @@ class Transactions extends Model {
     protected $fillable = [
         'seller',
         'buyer',
+        'card_name',
         'quantity',
-        't_price',
+        'price_unit',
         'status',
+        'confirm',
         'certified',
         'tracking_code',
     	'date_paid',

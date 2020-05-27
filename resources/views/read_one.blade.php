@@ -179,7 +179,27 @@ h2, h1, label{
 							<td>{{$item->seller}}</td>
 							<td>{{$item->condition}} - <img id="flags"  src="{{$salida}}"> - {{$item->fullart}} - @if ($item->foil != 0)<i class="fas fa-star" id="cosa"><span class="tooltiptext">foil</span></i>@else &nbsp @endif - {{$item->signed}} - {{$item->uber}} - {{$item->playset}} - {{$item->comment}}</td>
 							<td>
-								{{$item->price}}€ - {{$item->quantity}} - <button class="w3-button w3-circle" onclick="showEdit({{$item->id}})"><i class="fas fa-edit"> </i></button><button class="w3-button w3-circle"><a href="{{url('delete/'.$item->id)}}"><i class="fas fa-trash-alt"></i></a></button><button class="w3-button w3-circle"><i class="fas fa-cart-plus"></i></button>
+								{{$item->price}}€ - {{$item->quantity}} - <button class="btn" onclick="showEdit({{$item->id}})"><i class="fas fa-edit"> </i></button><button class="btn"><a href="{{url('delete/'.$item->id)}}"><i class="fas fa-trash-alt"></i></a></button><button class="btn" onclick="showBuy({{$item->id}})"><i class="fas fa-cart-plus"></i></button>
+									<form action="{{url('api/transactions')}}" method="post" style="display:none;" id="{{'buy'.$item->id}}">
+										<input type="hidden" value="{{$item->seller}}" name="seller">
+										<input type="hidden" value="{{auth::user()->username}}" name="buyer">
+										<input type="hidden" value="{{$card->name}}" name="card_name">
+										<select name="quantity" >
+										@for($i = 0; $i <= $item->quantity; $i++)
+											<option value="{{$i}}">{{$i}}</option>
+										@endfor	
+										</select>
+										@php
+											$tracking = rand(1,1000);
+										@endphp
+										<input type="hidden" value="{{$item->price}}" name="price_unit">
+										<input type="hidden" value="send" name="status">
+										<input type="hidden" value="1" name="certified">
+										<input type="hidden" value="{{$tracking}}" name="tracking_code">
+										<input type="hidden" value="{{ date('Y-m-d H:i:s') }}" name="date_paid">
+										{{--{{csrf_field()}}--}}
+										<input type="submit" name="submit">
+									</form>
 								<div style="display:none;" id="{{'editDiv'.$item->id}}">
 									<form action="{{url('api/clist/'.$item->id)}}" method="post">
       									{{ method_field('PUT') }}
@@ -271,5 +291,15 @@ h2, h1, label{
 			}
 			document.getElementById(tab).style.display = "block";  
 		}
+
+		function showBuy($id) {
+			if (document.getElementById("buy"+$id).style.display == "block") {
+				document.getElementById("buy"+$id).style.display = "none";
+			} else {
+				document.getElementById("buy"+$id).style.display = "block";
+			}
+		}
+
+
 	</script>
 @stop

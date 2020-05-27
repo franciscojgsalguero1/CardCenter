@@ -18,6 +18,13 @@ class ListController extends Controller {
 
         $this->updateCardQuantity($request->input('name'));
         $this->updateCardPriceFrom($request->input('name'));
+
+        $name = $request->input('name');
+        $id = Card::where('name', $name)->get('id');
+        $card = Card::find($id[0]['id']);
+
+        return redirect()->action(
+            'main\ListController@read_one', ['id' => $card]);
     }
 
     private function updateCardQuantity($name) {
@@ -56,7 +63,7 @@ class ListController extends Controller {
 
     public function update(Request $request, $id) {
         $list = CardList::find($id);
-
+        $name = CardList::find($id)->name;
         $list->language = $request->input('language');
         $list->price = $request->input('price');
         $list->quantity = $request->input('quantity');
@@ -88,6 +95,11 @@ class ListController extends Controller {
             $list->playset = 1;
         }
         $list->save();
+         $id = Card::where('name', $name)->get('id');
+        $card = Card::find($id[0]['id']);
+
+        return redirect()->action(
+            'main\ListController@read_one', ['id' => $card]);
 
         $this->updateCardQuantity($request->input('name'));
         $this->updateCardPriceFrom($request->input('name'));
@@ -115,9 +127,15 @@ class ListController extends Controller {
 
     public function deleteList($id) {
         $card = CardList::find($id);
+        $name = CardList::find($id)->name;
         $card->delete();
+        $id = Card::where('name', $name)->get('id');
+        $card = Card::find($id[0]['id']);
 
-        $this->updateCardQuantity($card->name);
-        $this->updateCardPriceFrom($card->name);
+        return redirect()->action(
+            'main\ListController@read_one', ['id' => $card]);
+
+      // $this->updateCardQuantity($request->input('name'));
+       // $this->updateCardPriceFrom($request->input('name'));
     }
 }

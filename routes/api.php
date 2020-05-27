@@ -16,6 +16,7 @@ Route::group(["namespace" => "main"], function() {
 Route::group(["namespace" => "main"], function() {
 	Route::apiResource('transactions', 'TransactionsController');
 	Route::get('transactions/restore/{id}', 'TransactionsController@restore');
+	Route::get('transactions/updateConfirm/{id}' , 'TransactionsController@updateConfirm');
 });
 
 Route::group(["namespace" => "main"], function() {

@@ -20,3 +20,4 @@ Route::get('/view/{id}/', "main\ListController@read_one");
 Route::get('/delete/{id}/', "main\ListController@deleteList");
 
 /* Transactions */
+Route::get('/view_buy/{name}/', "main\TransactionsController@test");
