@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -21,3 +21,4 @@ Route::get('/delete/{id}/', "main\ListController@deleteList");
 
 /* Transactions */
 Route::get('/cart_view/', "main\TransactionsController@cart_view");
+route::get('/', "main\CardController@main");

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\main;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Card;
+use App\CardList;
 
 class CardController extends Controller {
     private $html = "text/html";
@@ -47,5 +48,13 @@ class CardController extends Controller {
 
     public function add_cards() {
         return response()->view('add_cards', ['cards' => Card::all()]);
+    }
+    public function main(){
+
+        return response()->view('main',[
+            'card' => Card::all()->sortBy('updated_at')->take(10),
+            'cardlist' => CardList::all()->sortBy('price')->take(10),
+            'card2' =>Card::all()   
+            ]); 
     }
 }

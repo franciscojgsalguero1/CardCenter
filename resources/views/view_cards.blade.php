@@ -1,23 +1,5 @@
 @extends('layouts.app')
-    <style>
-    .flex-container {
-  display: flex;
-  align-items: stretch;
 
-}
-
-.flex-container > div {
-  background-color: ;
-  color: white;
-  margin-left: 20%;
-  text-align: center;
-  font-size: 30px;
-}
-th{
-    background-color: #012169;
-    color: white;
-}
-</style>
 @section('content')
 <div class="flex-container">
     <div>

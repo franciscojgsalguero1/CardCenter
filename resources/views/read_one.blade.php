@@ -1,50 +1,6 @@
 @extends('layouts.app')
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-	.flex-container {
-	  display: flex;
-	  align-items: stretch;
-	  margin-left: 20%;
-	}
-	.flex-container > div {
-	  background-color: ;
-	  color: white;
-	  text-align: center;
-	}
-	#info {
-		margin-left: 10%;
-	}
-	#tabs {
-		margin-left: 20%;
-		margin-right: 80%;
-		color: white;
-	}
-	th {
-	    background-color: #012169;
-	    color: white;
-	}
-	h2, h1, label {
-		text-align: center;
-		color: black;
-	}
-	#info-card {
-		font-size: 28px;
-	}
-	.tooltiptext {
-		visibility: hidden;
-		display: none;
-	}
-	#cosa:hover .tooltiptext {
-		z-index: 1;
-		visibility: visible;
-		display: block;
-		opacity: 1;
-	}
-	.flag {
-		width: 25px;
-		height: 25px;
-	}
-</style>
+
 @section('content')
 
 <h1>{{$card->name}} </h1>
