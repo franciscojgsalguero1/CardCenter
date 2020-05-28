@@ -1,14 +1,15 @@
-1. crear cuentas de "admin" -> campo (tinyint) en tabla users.
-2. hacer que la pagina /add/ solo se pueda editar por admin.
+2. la pagina /add/ estara en el menu y solo sera visible si el usuario es admin.
 
-??. Transactions.
+??. Transactions -> WIP (esperando que fran haga el Carrito).
 ??. Home page.
 ??. Login with username instead of email.
 ??. Table with expansions (with foreign key relation).
 ??. Emails.
-??. Shopping cart (ALSO IN MYSQL).
-??. redirecciones
-??. pag user (change userpass)
-??. pruevba
+??. Shopping cart (se ocupa Fran).
+??. redirecciones WIP (Alberto).
+??. pagina donde el usuario puede cambiar su password.
+??. remove <br> from read one
+??. move css to another file
+??. move js to another file
 
 ***. Visual.

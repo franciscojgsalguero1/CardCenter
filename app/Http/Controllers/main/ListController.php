@@ -15,16 +15,14 @@ class ListController extends Controller {
 
     public function store(Request $request) {
         $list = CardList::create($request->all());
-
-        $this->updateCardQuantity($request->input('name'));
-        $this->updateCardPriceFrom($request->input('name'));
-
         $name = $request->input('name');
         $id = Card::where('name', $name)->get('id');
         $card = Card::find($id[0]['id']);
 
-        return redirect()->action(
-            'main\ListController@read_one', ['id' => $card]);
+        $this->updateCardQuantity($name);
+        $this->updateCardPriceFrom($name);
+
+        return redirect()->action('main\ListController@read_one', ['id' => $card]);
     }
 
     private function updateCardQuantity($name) {
@@ -95,14 +93,13 @@ class ListController extends Controller {
             $list->playset = 1;
         }
         $list->save();
-         $id = Card::where('name', $name)->get('id');
+        $id = Card::where('name', $name)->get('id');
         $card = Card::find($id[0]['id']);
-
-        return redirect()->action(
-            'main\ListController@read_one', ['id' => $card]);
 
         $this->updateCardQuantity($request->input('name'));
         $this->updateCardPriceFrom($request->input('name'));
+
+        return redirect()->action('main\ListController@read_one', ['id' => $card]);
     }
 
     // Unused - API
@@ -132,8 +129,7 @@ class ListController extends Controller {
         $id = Card::where('name', $name)->get('id');
         $card = Card::find($id[0]['id']);
 
-        return redirect()->action(
-            'main\ListController@read_one', ['id' => $card]);
+        return redirect()->action('main\ListController@read_one', ['id' => $card]);
 
       // $this->updateCardQuantity($request->input('name'));
        // $this->updateCardPriceFrom($request->input('name'));
