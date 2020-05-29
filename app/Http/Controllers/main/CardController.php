@@ -10,6 +10,10 @@ use App\CardList;
 class CardController extends Controller {
     private $html = "text/html";
     private $json = "javascript/json";
+
+    /*
+    * CRUD
+    */
     
     public function index() {
         $card = Card::all();
@@ -36,6 +40,10 @@ class CardController extends Controller {
     public function restore($id) {
         $card = Card::withTrashed()->find($id)->restore();
     }
+
+    /*
+    * Controller Methods
+    */
 
     public function view() {
         $cards = Card::all();

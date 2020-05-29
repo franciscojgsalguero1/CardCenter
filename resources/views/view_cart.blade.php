@@ -7,10 +7,10 @@
 	<span>Price: {{$card["t_price"]}}</span>
 
 	<table>
-	<th>Qtty</th>
-	<th>Name</th>
-	<th>Information</th>
-	<th>Price</th>
+		<th>Qtty</th>
+		<th>Name</th>
+		<th>Information</th>
+		<th>Price</th>
 		
 			@foreach($card_list as $item)
 			<tr>

@@ -1,8 +1,9 @@
 Ivan:
 1. la pagina /add/ estara en el menu y solo sera visible si el usuario es admin.
 2. Login with username instead of email.
-3. Emails.
-4. Separate read_one into multiple files.
+3. Separate read_one into multiple files.
+4. Emails.
+??. TransactionsController -> review CRUD update method.
 ??. Transactions. -> WIP (esperando que fran haga el Carrito).
 
 Alberto:
@@ -15,6 +16,11 @@ Fran:
 ??. Shopping cart (se ocupa Fran).
 ??. remove <br> from read one (Fran)
 ??. Visual.
-
+??. Documentacion.
 
 ??. Table with expansions (with foreign key relation).
+
+
+Preguntar a Randion:
+- La presentacion: Necesitamos una presentacion en un fichero o lo hacemos live?
+- Tenemos que hacer el CRUD aparte? 

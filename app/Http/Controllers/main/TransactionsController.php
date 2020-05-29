@@ -9,6 +9,11 @@ use App\Card;
 use \stdClass;
 
 class TransactionsController extends Controller {
+
+    /*
+    * CRUD
+    */
+
     public function index() {
         $transaction = Tx::all();
     }
@@ -29,12 +34,8 @@ class TransactionsController extends Controller {
     public function update(Request $request, $id) {
         $transaction = Tx::find($id);
 
-        $transaction->confirm =$this->getconfirm();
         $transaction->status = $this->getStatus();
         $transaction->certified = $this->isCertified();
-        $transaction->tracking_code = $this->getTrackingCode();
-        $transaction->date_paid = $this->getDatePaid();
-        $transaction->date_sent = $this->getDateSent();
         $transaction->date_recieved = $this->getDateRecieved();
         $transaction->save();
     }
@@ -47,6 +48,10 @@ class TransactionsController extends Controller {
     public function restore($id) {
         $transaction = Tx::withTrashed()->find($id)->restore();
     }
+
+    /*
+    * Controller Methods
+    */
 
     public function cart_view() {
         $card1 = new stdClass();

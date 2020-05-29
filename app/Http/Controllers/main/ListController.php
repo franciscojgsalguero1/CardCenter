@@ -8,7 +8,11 @@ use App\Card;
 use App\CardList;
 
 class ListController extends Controller {
-    // Unused - API
+
+    /*
+    * CRUD
+    */
+
     public function index() {
         $list = CardList::all();
     }
@@ -54,7 +58,6 @@ class ListController extends Controller {
         $card->save();
     }
 
-    // Unused - API
     public function show($id) {
         $list = CardList::find($id);
     }
@@ -102,16 +105,18 @@ class ListController extends Controller {
         return redirect()->action('main\ListController@read_one', ['id' => $card]);
     }
 
-    // Unused - API
     public function destroy($id) {
         $list = CardList::find($id);
         $list->delete();
     }
 
-    // Unused - API
     public function restore($id) {
         $list = CardList::withTrashed()->find($id)->restore();
     }
+
+    /*
+    * Controller Methods
+    */
 
     public function read_one($id) {
         $name = Card::find($id)->name;
