@@ -25,3 +25,4 @@ Others:
 Preguntar a Randion:
 - La presentacion: Necesitamos una presentacion en un fichero o lo hacemos live?
 - Tenemos que hacer el CRUD aparte?
+- si los correos fallan, podemos hacer un form con preguntas, y en caso de que las preguntas se contestan bien, lleva al usuario a otro form donde cambia su constrasena?
