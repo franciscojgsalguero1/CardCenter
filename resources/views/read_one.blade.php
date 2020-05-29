@@ -105,7 +105,7 @@
 								@php ($flag = "https://www.countryflags.io/gb/flat/64.png")
 								@break
 							@case("German")
-								@php ($flag = "https://www.countryflags.io/be/flat/64.png")
+								@php ($flag = "https://www.countryflags.io/de/flat/64.png")
 								@break
 							@case("French")
 								@php ($flag = "https://www.countryflags.io/fr/flat/64.png")
@@ -218,7 +218,7 @@
 								@php ($flag = "https://www.countryflags.io/gb/flat/64.png")
 								@break
 							@case("German")
-								@php ($flag = "https://www.countryflags.io/be/flat/64.png")
+								@php ($flag = "https://www.countryflags.io/de/flat/64.png")
 								@break
 							@case("French")
 								@php ($flag = "https://www.countryflags.io/fr/flat/64.png")
