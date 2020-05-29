@@ -1,15 +1,20 @@
-2. la pagina /add/ estara en el menu y solo sera visible si el usuario es admin.
+Ivan:
+1. la pagina /add/ estara en el menu y solo sera visible si el usuario es admin.
+2. Login with username instead of email.
+3. Emails.
+4. Separate read_one into multiple files.
+??. Transactions. -> WIP (esperando que fran haga el Carrito).
 
-??. Transactions -> WIP (esperando que fran haga el Carrito).
-??. Home page.
-??. Login with username instead of email.
-??. Table with expansions (with foreign key relation).
-??. Emails.
-??. Shopping cart (se ocupa Fran).
+Alberto:
+??. Home page WIP (Alberto).
 ??. redirecciones WIP (Alberto).
-??. pagina donde el usuario puede cambiar su password.
-??. remove <br> from read one
-??. move css to another file
-??. move js to another file
+??. pagina donde el usuario puede cambiar su password (Alberto).
+??. move js to another file (alberto)
 
-***. Visual.
+Fran:
+??. Shopping cart (se ocupa Fran).
+??. remove <br> from read one (Fran)
+??. Visual.
+
+
+??. Table with expansions (with foreign key relation).

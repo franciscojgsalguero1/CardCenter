@@ -49,12 +49,12 @@ class CardController extends Controller {
     public function add_cards() {
         return response()->view('add_cards', ['cards' => Card::all()]);
     }
-    public function main(){
 
+    public function main(){
         return response()->view('main',[
-            'card' => Card::all()->sortBy('updated_at')->take(10),
+            'first_cards' => Card::all()->sortBy('updated_at')->take(10),
             'cardlist' => CardList::all()->sortBy('price')->take(10),
-            'card2' =>Card::all()   
-            ]); 
+            'all_cards' => Card::all()   
+        ]); 
     }
 }

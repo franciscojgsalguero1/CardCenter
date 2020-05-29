@@ -4,10 +4,11 @@
 @section('content')
 
 <h1>{{$card->name}} </h1>
+
 	<div class="w3-bar w3-white" id="tabs">
-		<button class="w3-bar-item w3-button" onclick="openTab('info')">Information <i class="fas fa-info-circle"></i></button>
+		<button class="w3-bar-item w3-button" onclick="openTab(event, 'info')">Information <i class="fas fa-info-circle"></i></button>
 		@auth
-			<button class="w3-bar-item w3-button" onclick="openTab('sell')">
+			<button class="w3-bar-item w3-button" onclick="openTab(event, 'sell')">
 				Sell <i class="fas fa-shopping-cart"></i>
 			</button>
 		@endauth
@@ -17,15 +18,15 @@
 		<div>
 			<img src="{{$card->src}}" height="200" width="160">
 		</div>
-		<div id="info">
+		<div id="info" class="tabcontent">
 			<table id="info-card">
 				<tr>
 					<td>Printed in:</td>
-					<td> {{$card->expansion}}</td>
+					<td>{{$card->expansion}}</td>
 				</tr>
 				<tr>
 					<td>Number:</td>
-					<td> {{$card->number}}</td>
+					<td>{{$card->number}}</td>
 				</tr>
 				<tr>
 					<td>Quantity:</td>
@@ -45,7 +46,7 @@
 
 	@auth
 		<div class="flex-container">
-			<div id="sell" class="w3-container city" style="display:none">
+			<div id="sell" class="w3-container tabcontent" style="display:none">
 				<form action="{{url('api/clist')}}" method="post">
 			    	<input type="hidden" name="name" value="{{$card->name}}">
 			    	<input type="hidden" name="seller" value="{{Auth::user()->username}}">
@@ -74,13 +75,13 @@
 					<label for="comment">Comments</label>
 					<input type="text" id="comment" name="comment"><br>
 					<input type="checkbox" id="cbx_fullart" name="fullArt" value="1">
-					<label for="cbx_fullart">FullArt?</label><br>	
+					<label for="cbx_fullart">FullArt?</label>
 					<input type="checkbox" id="cbx_foil" name="foil" value="1">
 					<label for="cbx_foil">Foil?</label><br>
 					<input type="checkbox" id="cbx_signed" name="signed" value="1">
-					<label for="cbx_signed">Signed?</label><br>
+					<label for="cbx_signed">Signed?</label>
 					<input type="checkbox" id="cbx_uber" name="uber" value="1">
-					<label for="cbx_uber">Uber?</label><br>
+					<label for="cbx_uber">Uber?</label>
 					<input type="checkbox" id="cbx_playset" name="playset" value="1">
 					<label for="cbx_playset">Playset?</label><br>
 					<label for="price">Price</label>
@@ -326,13 +327,18 @@
 			}
 		}
 
-		function openTab(tab) {
-			var i;
-			var x = document.getElementsByClassName("city");
-			for (i = 0; i < x.length; i++) {
-				x[i].style.display = "none";  
+		function openTab(evt, tab) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
 			}
-			document.getElementById(tab).style.display = "block";  
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(tab).style.display = "block";
+			evt.currentTarget.className += " active";
 		}
 
 		function showBuy(id) {
