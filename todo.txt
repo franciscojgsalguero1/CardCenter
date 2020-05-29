@@ -23,4 +23,4 @@ Fran:
 
 Preguntar a Randion:
 - La presentacion: Necesitamos una presentacion en un fichero o lo hacemos live?
-- Tenemos que hacer el CRUD aparte? 
+- Tenemos que hacer el CRUD aparte?

@@ -23,17 +23,15 @@ class ListController extends Controller {
         $id = Card::where('name', $name)->get('id');
         $card = Card::find($id[0]['id']);
 
-        $this->updateCardQuantity($name);
-        $this->updateCardPriceFrom($name);
+        $this->updateCardQuantity($name, $card);
+        $this->updateCardPriceFrom($name, $card);
 
         return redirect()->action('main\ListController@read_one', ['id' => $card]);
     }
 
-    private function updateCardQuantity($name) {
+    private function updateCardQuantity($name, $card) {
         $total = 0;
         $list = CardList::where('name', $name)->get('quantity');
-        $id = Card::where('name', $name)->get('id');
-        $card = Card::find($id[0]['id']);
 
         foreach ($list as $item) {
             $total = $total + $item->quantity;
@@ -43,11 +41,9 @@ class ListController extends Controller {
         $card->save();
     }
 
-    private function updateCardPriceFrom($name) {
+    private function updateCardPriceFrom($name, $card) {
         $prices = array();
         $list = CardList::where('name', $name)->get();
-        $id = Card::where('name', $name)->get('id');
-        $card = Card::find($id[0]['id']);
 
         foreach ($list as $item) {
             array_push($prices, $item->price);
@@ -99,8 +95,8 @@ class ListController extends Controller {
         $id = Card::where('name', $name)->get('id');
         $card = Card::find($id[0]['id']);
 
-        $this->updateCardQuantity($request->input('name'));
-        $this->updateCardPriceFrom($request->input('name'));
+        $this->updateCardQuantity($request->input('name'), $card);
+        $this->updateCardPriceFrom($request->input('name'), $card);
 
         return redirect()->action('main\ListController@read_one', ['id' => $card]);
     }
@@ -134,9 +130,9 @@ class ListController extends Controller {
         $id = Card::where('name', $name)->get('id');
         $card = Card::find($id[0]['id']);
 
-        return redirect()->action('main\ListController@read_one', ['id' => $card]);
+        $this->updateCardQuantity($name, $card);
+        $this->updateCardPriceFrom($name, $card);
 
-      // $this->updateCardQuantity($request->input('name'));
-       // $this->updateCardPriceFrom($request->input('name'));
+        return redirect()->action('main\ListController@read_one', ['id' => $card]);
     }
 }
