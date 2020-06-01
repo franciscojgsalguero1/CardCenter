@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Mail\WelcomeMail;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller {
@@ -34,6 +36,7 @@ class RegisterController extends Controller {
     }
 
     protected function create(array $data) {
+        $this->sendmail($data);
         return User::create([
             'username' => $data['username'],
             'name' => $data['name'],
@@ -49,7 +52,16 @@ class RegisterController extends Controller {
     }
 
     protected function update($name, $password1) {
+        User::where('email', $name)->update(['password', hass::make($password1)]);
+    }
 
-        User::where('email', $name)->update(['password' ,hass::make($password1)]);
+    private function sendmail(array $data) {
+        $contents = ([
+            'name' => $data['name'],
+            'surname' => $data['surname'],
+            'email' => $data['email'],
+            'username' => $data['username']
+        ]);
+        Mail::to($data['email'])->send(new WelcomeMail ($contents));
     }
 }
