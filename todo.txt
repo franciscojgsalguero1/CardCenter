@@ -1,10 +1,11 @@
 Ivan:
 ??. TransactionsController -> review CRUD update method.
 ??. Transactions. -> WIP (esperando que fran haga el Carrito).
-1. move js to another file (alberto)
 
 Alberto:
 ??. Home page WIP (Alberto).
+??. capturas del home
+??. nombres mas cortos de las cartas del home
 
 Fran:
 ??. Shopping cart (se ocupa Fran).

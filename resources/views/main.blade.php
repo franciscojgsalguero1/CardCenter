@@ -30,10 +30,10 @@
     </a>
 </div>
 <div class="flex-container-main" style="margin:0">
-    <div style="width:50%">
+    <div>
         <h1 class="titulos">Lastt Add</h1>
     </div>
-    <div style="width:50%">
+    <div>
         <h1 class="titulos">Best Price</h1>
     </div>
 </div>
@@ -65,17 +65,17 @@
             @endforeach
             @php($j++)
             <br>
-            <b class="titles">{{$item->name}}</b>
-            <br>
-            <b class="titles">{{$item->price}}€ / unit</b>
+            <div class="nombre">
+                <b>{{$item->name}}</b>
+            </div>
+            <b>{{$item->price}}€ / unit</b>
             @endif
         </div>
         @endforeach
     </div>
 </div>
-</div>
 <div class="flex-container-main" style="margin-top:0">
-    <div style="width:50%;">
+    <div>
         <table>
             @php ($i=0)
             @foreach($all_cards as $item)
@@ -91,7 +91,7 @@
             @endforeach
         </table>
     </div >
-    <div style="width:50%">
+    <div>
         <table>
             @php ($j=0)
 
@@ -114,6 +114,5 @@
             @endforeach
         </table>
     </div>
-</div>
 </div>
 @stop
