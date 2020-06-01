@@ -42,7 +42,6 @@
 			</tr>
 		</table>
 	</div>
-
 	@auth
 		<div class="flex-container">
 			<div id="sell" class="w3-container tabcontent" style="display:none">
@@ -91,7 +90,7 @@
 			</div>
 		</div>
 	@endauth
-
+</div>
 	<div class="flex-container">
 		<div>
 			@if (count($clist) >= 1)
@@ -132,19 +131,19 @@
 										<span>{{$item->condition}}</span>
 										<img class="flag" src="{{$flag}}">
 										@if ($item->fullart == 1)
-											<i class="fab fa-foursquare"></i>
+											<i class="fab fa-foursquare" data-toggle="tooltip" data-placement="bottom" title="Full art"></i>
 										@endif
 										@if ($item->foil == 1)
-											<i class="fas fa-star"></i>
+											<i class="fas fa-star" data-toggle="tooltip" data-placement="bottom" title="Foil"></i>
 										@endif
 										@if ($item->signed == 1)
-											<i class="fas fa-signature"></i>
+											<i class="fas fa-signature" data-toggle="tooltip" data-placement="bottom" title="Signed"></i>
 										@endif
 										@if ($item->uber == 1)
-											<i class="far fa-gem"></i>
+											<i class="far fa-gem" data-toggle="tooltip" data-placement="bottom" title="Uber"></i>
 										@endif
 										@if ($item->playset == 1)
-											<i class="fas fa-dice-four"></i>
+											<i class="fas fa-dice-four" data-toggle="tooltip" data-placement="bottom" title="Play set"></i>
 										@endif
 										<span>{{$item->comment}}</span>
 									</td>
@@ -244,19 +243,19 @@
 										<span>{{$item->condition}}</span>
 										<img class="flag" src="{{$flag}}">
 										@if ($item->fullart == 1)
-											<i class="fab fa-foursquare"></i>
+											<i class="fab fa-foursquare" data-toggle="tooltip" data-placement="bottom" title="Full art"></i>
 										@endif
 										@if ($item->foil == 1)
-											<i class="fas fa-star"></i>
+											<i class="fas fa-star" data-toggle="tooltip" data-placement="bottom" title="Foil"></i>
 										@endif
 										@if ($item->signed == 1)
-											<i class="fas fa-signature"></i>
+											<i class="fas fa-signature" data-toggle="tooltip" data-placement="bottom" title="Signed"></i>
 										@endif
 										@if ($item->uber == 1)
-											<i class="far fa-gem"></i>
+											<i class="far fa-gem" data-toggle="tooltip" data-placement="bottom" title="Uber"></i>
 										@endif
 										@if ($item->playset == 1)
-											<i class="fas fa-dice-four"></i>
+											<i class="fas fa-dice-four" data-toggle="tooltip" data-placement="bottom" title="Play set"></i>
 										@endif
 										<span>{{$item->comment}}</span>
 									</td>
@@ -287,19 +286,19 @@
 									<span>{{$item->condition}}</span>
 									<img class="flag" src="{{$flag}}"> 
 									@if ($item->fullart == 1)
-										<i class="fab fa-foursquare"></i>
+										<i class="fab fa-foursquare" data-toggle="tooltip" data-placement="bottom" title="Full art"></i>
 									@endif
 									@if ($item->foil == 1)
-										<i class="fas fa-star"></i>
+										<i class="fas fa-star" data-toggle="tooltip" data-placement="bottom" title="Foil"></i>
 									@endif
 									@if ($item->signed == 1)
-										<i class="fas fa-signature"></i>
+										<i class="fas fa-signature" data-toggle="tooltip" data-placement="bottom" title="Signed"></i>
 									@endif
 									@if ($item->uber == 1)
-										<i class="far fa-gem"></i>
+										<i class="far fa-gem" data-toggle="tooltip" data-placement="bottom" title="Uber"></i>
 									@endif
 									@if ($item->playset == 1)
-										<i class="fas fa-dice-four"></i>
+										<i class="fas fa-dice-four" data-toggle="tooltip" data-placement="bottom" title="Play"></i>
 									@endif
 									<span>{{$item->comment}}</span>
 								</td>

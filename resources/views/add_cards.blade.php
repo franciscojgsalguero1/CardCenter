@@ -3,7 +3,7 @@
 @section('content')
 
     <h1>Create Card</h1>
-
+<div class="flex-container">
     <form action="{{url('api\cards')}}" method="post">
 
         <input type="text" name="name" placeholder="Enter title">
@@ -16,5 +16,5 @@
         <input type="submit" name="submit">
 
     </form>
-
+</div>
 @stop

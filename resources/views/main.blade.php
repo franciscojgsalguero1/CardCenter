@@ -31,10 +31,10 @@
 </div>
 <div class="flex-container-main" style="margin:0">
     <div style="width:50%">
-        <h1>Lastt Add</h1>
+        <h1 class="titulos">Lastt Add</h1>
     </div>
     <div style="width:50%">
-        <h1>Best Price</h1>
+        <h1 class="titulos">Best Price</h1>
     </div>
 </div>
 <div class="flex-container-main">
@@ -45,7 +45,7 @@
                 <div>
                     <a href="{{url('view/'.$item->id)}}" ><img src="{{$item->src}}" class="img-main"></a>
                     <br>
-                    <b>{{$item->name}}</b>
+                    <b data-toggle="tooltip" data-placement="top" title="{{$item->name}}">{{$item->name}}</b>
                     <br>
                     <b class="titels">{{$item->expansion}}-{{$item->number}} ({{$item->rarity}})</b>
                     @php($i++)

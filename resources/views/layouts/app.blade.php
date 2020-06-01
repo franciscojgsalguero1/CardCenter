@@ -32,20 +32,18 @@
             <button class="w3-bar-item w3-button w3-large"
             onclick="w3_close()">Close &times;</button>
             <a href="{{url('/')}}" class="w3-bar-item w3-button">Home</a>
-            <a href="{{url('view/')}}" class="w3-bar-item w3-button">Carts List</a>
-            <a href="#" class="w3-bar-item w3-button">Link 2</a>
-            <a href="#" class="w3-bar-item w3-button">Link 3</a>
+            <a href="{{url('view/')}}" class="w3-bar-item w3-button">Carts List</a>           
+            <a href="{{url('user/')}}" class="w3-bar-item w3-button">User</a>
+            <a href="{{url('add/')}}" class="w3-bar-item w3-button">Add carts</a><!-- añdir filtro para admin -->
             </div>
             <div id="main">
                 <div class="w3-Light Gray">
                     <button id="openNav" class="w3-button w3-Light Gray w3-xlarge" onclick="w3_open()">&#9776;</button>
-                
                 </div>
             </div>
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -60,13 +58,12 @@
                             @endif
                             @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
-                                onclick="document.getElementById('pruebas').style.display = 'block';">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+                                onclick="logoutMenu()">
                                     {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="pruebas">
-                                    <button onclick="document.getElementById('pruebas').style.display = 'none';">&times;</button>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -101,6 +98,14 @@ function w3_close() {
   document.getElementById("openNav").style.display = "inline-block";
   document.getElementById("p1").style.marginLeft = "0%";
 }
+function logoutMenu() {
+        if (document.getElementById("pruebas").style.display == "block") {
+            document.getElementById("pruebas").style.display = "none";
+        } else {
+            document.getElementById("pruebas").style.display = "block";
+        }
+    }
+
 </script>
 </body>
 </html>

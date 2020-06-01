@@ -22,3 +22,5 @@ Route::get('/delete/{id}/', "main\ListController@deleteList");
 /* Transactions */
 Route::get('/cart_view/', "main\TransactionsController@cart_view");
 route::get('/', "main\CardController@main");
+
+/* User */
