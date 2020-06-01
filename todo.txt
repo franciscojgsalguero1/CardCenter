@@ -9,7 +9,7 @@ Ivan:
 Alberto:
 ??. Home page WIP (Alberto).
 ??. redirecciones WIP (Alberto).
-??. pagina donde el usuario puede cambiar su password (Alberto).
+??. pagina donde el usuario puede cambiar su password (Alberto). hecho (funciona)
 ??. move js to another file (alberto)
 
 Fran:

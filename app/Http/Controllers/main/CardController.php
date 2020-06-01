@@ -65,4 +65,6 @@ class CardController extends Controller {
             'all_cards' => Card::all()   
         ]); 
     }
+
+
 }

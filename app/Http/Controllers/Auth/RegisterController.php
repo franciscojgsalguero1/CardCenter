@@ -47,4 +47,9 @@ class RegisterController extends Controller {
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    protected function update($name, $password1) {
+
+        User::where('email', $name)->update(['password' ,hass::make($password1)]);
+    }
 }

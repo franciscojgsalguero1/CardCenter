@@ -9,6 +9,10 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 class LoginController extends Controller {
     use AuthenticatesUsers;
 
+    public function redirectTo(){
+    	return '/';
+    }
+
     protected $redirectTo = RouteServiceProvider::HOME;
 
     public function __construct() {
