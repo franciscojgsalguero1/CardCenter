@@ -1,14 +1,10 @@
 Ivan:
-1. Login with username instead of email.
-2. Emails.
 ??. TransactionsController -> review CRUD update method.
 ??. Transactions. -> WIP (esperando que fran haga el Carrito).
+1. move js to another file (alberto)
 
 Alberto:
 ??. Home page WIP (Alberto).
-??. redirecciones WIP (Alberto).
-??. pagina donde el usuario puede cambiar su password (Alberto). hecho (funciona)
-??. move js to another file (alberto)
 
 Fran:
 ??. Shopping cart (se ocupa Fran).
@@ -16,11 +12,11 @@ Fran:
 ??. Visual.
 ??. Documentacion.
 
-Others:
-??. Table with expansions (with foreign key relation).
-
 
 Preguntar a Randion:
 - La presentacion: Necesitamos una presentacion en un fichero o lo hacemos live?
 - Tenemos que hacer el CRUD aparte?
 - si los correos fallan, podemos hacer un form con preguntas, y en caso de que las preguntas se contestan bien, lleva al usuario a otro form donde cambia su constrasena?
+
+Pendiente hablar con Randion:
+- Correos creacion cuenta y cambio contrasena.

@@ -36,7 +36,7 @@ class RegisterController extends Controller {
     }
 
     protected function create(array $data) {
-        $this->sendmail($data);
+        //$this->sendmail($data);
         return User::create([
             'username' => $data['username'],
             'name' => $data['name'],
