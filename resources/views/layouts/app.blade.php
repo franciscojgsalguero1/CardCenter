@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/custom.js') }}" defer></script>
 
     <!-- Fonts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -23,93 +24,62 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/prueba.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        CardCenter<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
-            <button class="w3-bar-item w3-button w3-large"
-            onclick="w3_close()">Close &times;</button>
-            <a href="{{url('/')}}" class="w3-bar-item w3-button">Home</a>
-            <a href="{{url('view/')}}" class="w3-bar-item w3-button">Cards List</a>
-            @auth         
-                <a href="{{url('changePassword/')}}" class="w3-bar-item w3-button">Change Password</a>
-                @if (Auth::user()->type == "admin")
-                    <a href="{{url('add/')}}" class="w3-bar-item w3-button">Add carts</a>
-                @endif
-            @endauth
+            CardCenter<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+                <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">
+                    Close &times;
+                </button>
+                <a href="{{url('/')}}" class="w3-bar-item w3-button">Home</a>
+                <a href="{{url('view/')}}" class="w3-bar-item w3-button">Cards List</a>
+                @auth         
+                    <a href="{{url('changePassword/')}}" class="w3-bar-item w3-button">Change Password</a>
+                    @if (Auth::user()->type == "admin")
+                        <a href="{{url('add/')}}" class="w3-bar-item w3-button">Add carts</a>
+                    @endif
+                @endauth
             </div>
             <div id="main">
                 <div class="w3-Light Gray">
                     <button id="openNav" class="w3-button w3-Light Gray w3-xlarge" onclick="w3_open()">&#9776;</button>
                 </div>
             </div>
-                    <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto"></ul>
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ml-auto">
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="logoutMenu()">
+                            {{ Auth::user()->username }} <span class="caret"></span>
+                        </a>
 
-                    </ul>
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                            @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
-                                onclick="logoutMenu()">
-                                    {{ Auth::user()->username }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="pruebas">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>                            
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="pruebas">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>                            
+                        </div>
+                    </li>
+                @endguest
+            </ul>
         </nav>
+    </div>
 
-        <main class="py-4" id="p1">
-            @yield('content')
-        </main>
-    <script>
-function w3_open() {
-  document.getElementById("main").style.marginLeft = "15%";
-  document.getElementById("mySidebar").style.width = "15%";
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
-  document.getElementById("p1").style.marginLeft = "15%";
-
-}
-function w3_close() {
-  document.getElementById("main").style.marginLeft = "0%";
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("openNav").style.display = "inline-block";
-  document.getElementById("p1").style.marginLeft = "0%";
-}
-function logoutMenu() {
-        if (document.getElementById("pruebas").style.display == "block") {
-            document.getElementById("pruebas").style.display = "none";
-        } else {
-            document.getElementById("pruebas").style.display = "block";
-        }
-    }
-
-</script>
+    <main class="py-4" id="p1">
+        @yield('content')
+    </main>
 </body>
 </html>
