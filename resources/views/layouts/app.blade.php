@@ -32,9 +32,13 @@
             <button class="w3-bar-item w3-button w3-large"
             onclick="w3_close()">Close &times;</button>
             <a href="{{url('/')}}" class="w3-bar-item w3-button">Home</a>
-            <a href="{{url('view/')}}" class="w3-bar-item w3-button">Carts List</a>           
-            <a href="{{url('changePassword/')}}" class="w3-bar-item w3-button">ChangePassword</a>
-            <a href="{{url('add/')}}" class="w3-bar-item w3-button">Add carts</a><!-- añdir filtro para admin -->
+            <a href="{{url('view/')}}" class="w3-bar-item w3-button">Cards List</a>
+            @auth         
+                <a href="{{url('changePassword/')}}" class="w3-bar-item w3-button">ChangePassword</a>
+                @if (Auth::user()->admin == "admin")
+                    <a href="{{url('add/')}}" class="w3-bar-item w3-button">Add carts</a>
+                @endif
+            @endauth
             </div>
             <div id="main">
                 <div class="w3-Light Gray">

@@ -122,7 +122,6 @@
 								@php ($flag = "https://www.countryflags.io/cn/flat/64.png")
 								@break
 						@endswitch
-
 						<tr>
 							@auth
 								@if ($item->seller == Auth::user()->username)
