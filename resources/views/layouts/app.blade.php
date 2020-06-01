@@ -35,7 +35,7 @@
             <a href="{{url('view/')}}" class="w3-bar-item w3-button">Cards List</a>
             @auth         
                 <a href="{{url('changePassword/')}}" class="w3-bar-item w3-button">ChangePassword</a>
-                @if (Auth::user()->admin == "admin")
+                @if (Auth::user()->type == "admin")
                     <a href="{{url('add/')}}" class="w3-bar-item w3-button">Add carts</a>
                 @endif
             @endauth
