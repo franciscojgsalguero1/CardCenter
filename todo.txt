@@ -5,17 +5,24 @@ Ivan:
 ??. Tabla con expansiones.
 ??. switch de juegos, crear variables: src1, src2, src3 (para el carousel) y game para el select de cartas
 
+
+??. antes de entregar, comprobar nombres de variables, indentacion, quitar cosas que sobran.
+
 Alberto:
 ??. Home page WIP (Alberto).
 ??. capturas del home
 ??. nombres mas cortos de las cartas del home
 ??. Menu de los otros juegos (mtg, pokemon, yugioh, fow)
+??. Card list -> solo sale la lista de cartas de ese juego
 
 Fran:
 ??. Shopping cart (se ocupa Fran).
 ??. remove <br> from read one (Fran)
 ??. Visual.
 ??. Documentacion.
+
+Otros:
+- Filtro de cartas por expansion en card list.
 
 
 Preguntar a Randion:
