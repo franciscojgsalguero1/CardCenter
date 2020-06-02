@@ -18,10 +18,12 @@ Route::get('/add/', "main\CardController@add_cards");
 /* Card List */
 Route::get('/view/{id}/', "main\ListController@read_one");
 Route::get('/delete/{id}/', "main\ListController@deleteList");
+route::get('/prueba/{id}/', "main\ListController@test");
 
 /* Transactions */
 Route::get('/cart_view/', "main\TransactionsController@cart_view");
 route::get('/', "main\CardController@main");
+route::get('/{id}', "main\CardController@mainGames");
 
 /* User */
 Route::get('/changePassword', "HomeController@showChangePasswordForm");

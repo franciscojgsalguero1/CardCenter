@@ -57,14 +57,48 @@ class CardController extends Controller {
     public function add_cards() {
         return response()->view('add_cards', ['cards' => Card::all()]);
     }
+    
 
     public function main(){
+        $salida =[];
+        $carta = Card::all();
+        $venta = CardList::all();
+        foreach ($venta as $nombre => $valor) {
+            foreach ($carta as $nombre => $value) {
+                if ($valor['name']==$value['name']){
+                    if ($value['game']=='Force of Will'){
+                        array_push($salida, $valor);
+                    }
+                }
+            }
+        }
         return response()->view('main',[
-            'first_cards' => Card::all()->sortBy('updated_at')->take(10),
-            'cardlist' => CardList::all()->sortBy('price')->take(10),
-            'all_cards' => Card::all()   
+            'first_cards' => Card::all()->where('game', 'Force of Will')->sortBy('updated_at')->take(10),
+            'cardlist' => $salida,
+            'all_cards' => Card::all() 
         ]); 
     }
+     public function mainGames($id){
+        $salida =[];
+        $carta = Card::all();
+        $venta = CardList::all();
+        foreach ($venta as $nombre => $valor) {
+            foreach ($carta as $nombre => $value) {
+                if ($valor['name']==$value['name']){
+                    if ($value['game']==$id){
+                        array_push($salida, $valor);
+                    }
+                }
+            }
+        }
+        return response()->view('main',[
+            'first_cards' => Card::all()->where('game',$id)->sortBy('updated_at')->take(10),
+            'cardlist' => $salida,
+            'all_cards' => Card::all(),
+            'id' => $id
+        ]); 
+        
 
+    }
 
 }

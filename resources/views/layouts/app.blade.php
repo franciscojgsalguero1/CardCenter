@@ -47,6 +47,15 @@
                     <button id="openNav" class="w3-button w3-Light Gray w3-xlarge" onclick="w3_open()">&#9776;</button>
                 </div>
             </div>
+            <div class="dropdown">
+                <button class="dropbtn" onclick="gameMenu()">Game</button>
+                <div id="dropdown-content">
+                    <a href="{{url('/Force of Will')}}">Force of will</a>
+                    <a href="{{url('/Magic')}}">Magic</a>
+                    <a href="{{url('/yugiho')}}">Yu-gi-ho</a>
+                    <a href="{{url('/pokemon')}}">pokemon</a>
+                </div>
+            </div>
             <ul class="navbar-nav mr-auto"></ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">

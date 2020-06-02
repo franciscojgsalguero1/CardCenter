@@ -40,7 +40,7 @@
 <div class="flex-container-main">
     <div class="flex-container-main">
         @php ($i=0)
-        @foreach ($all_cards as $item)
+        @foreach ($first_cards as $item)
             @if($i<3)
                 <div>
                     <a href="{{url('view/'.$item->id)}}" ><img src="{{$item->src}}" class="img-main"></a>
@@ -78,7 +78,7 @@
     <div>
         <table>
             @php ($i=0)
-            @foreach($all_cards as $item)
+            @foreach($first_cards as $item)
             @php($i++)
             @if($i>3)
             <tr>
