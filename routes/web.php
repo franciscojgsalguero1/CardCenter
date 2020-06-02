@@ -8,7 +8,7 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/view/', 'main\CardController@view');
-
+Route::get('/view/{juego}', 'main\CardController@viewjuego');
 /* Final */
 Auth::routes();
 

@@ -34,7 +34,20 @@
                     Close &times;
                 </button>
                 <a href="{{url('/')}}" class="w3-bar-item w3-button">Home</a>
-                <a href="{{url('view/')}}" class="w3-bar-item w3-button">Cards List</a>
+                @if($demo ?? '')
+                
+                    @if($demo =="Magic")
+                        <a href="{{url('view/Magic')}}" class="w3-bar-item w3-button">Card List</a>
+                    @elseif($demo =="Force of Will")
+                        <a href="{{url('view/Force of Will')}}" class="w3-bar-item w3-button">Card List</a>
+                    @elseif($demo =="yugiho")
+                        <a href="{{url('view/yugiho')}}" class="w3-bar-item w3-button">Card List</a>
+                    @else
+                        <a href="{{url('view/pokemon')}}" class="w3-bar-item w3-button">Card List</a>
+                    @endif  
+                @else 
+                    <a href="{{url('view/Force of Will')}}" class="w3-bar-item w3-button">Card List</a>                                    
+                @endif
                 @auth         
                     <a href="{{url('changePassword/')}}" class="w3-bar-item w3-button">Change Password</a>
                     @if (Auth::user()->type == "admin")

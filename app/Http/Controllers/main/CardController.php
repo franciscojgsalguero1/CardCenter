@@ -53,6 +53,14 @@ class CardController extends Controller {
 
         return $response;
     }
+    public function viewjuego($juego) {
+        $cards = Card::all()->where('game' ,$juego);
+
+        $response = response()->view('view_cards', ['data' => $cards], 200);
+        $response->header("Content-Type", $this->html);
+
+        return $response;
+    }
 
     public function add_cards() {
         return response()->view('add_cards', ['cards' => Card::all()]);

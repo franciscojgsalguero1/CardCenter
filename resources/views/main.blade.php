@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['demo' => $id ?? ''])
 
 @section('content')
 <div id="demo" class="carousel slide" data-ride="carousel">
