@@ -1,16 +1,14 @@
 Ivan:
 ??. TransactionsController -> review CRUD update method.
 ??. Transactions. -> WIP (esperando que fran haga el Carrito).
-??. Entradas en la DB (cartas).
-??. Tabla con expansiones.
-??. switch de juegos, crear variables: src1, src2, src3 (para el carousel) y game para el select de cartas
-
+??. Entradas en la DB (cartas) -> WIP (faltan yugioh, magic and pokemon).
+??. switch de juegos, crear variables: src1, src2, src3 (para el carousel) y game para el select de cartas.
+??. capturas del home.
 
 ??. antes de entregar, comprobar nombres de variables, indentacion, quitar cosas que sobran.
 
 Alberto:
 ??. Home page WIP (Alberto).
-??. capturas del home
 ??. nombres mas cortos de las cartas del home
 ??. Menu de los otros juegos (mtg, pokemon, yugioh, fow)
 ??. Card list -> solo sale la lista de cartas de ese juego

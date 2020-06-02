@@ -53,6 +53,7 @@ class CardController extends Controller {
 
         return $response;
     }
+
     public function viewjuego($juego) {
         $cards = Card::all()->where('game' ,$juego);
 
@@ -66,7 +67,6 @@ class CardController extends Controller {
         return response()->view('add_cards', ['cards' => Card::all()]);
     }
     
-
     public function main(){
         $salida =[];
         $carta = Card::all();

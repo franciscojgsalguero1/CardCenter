@@ -40,7 +40,7 @@
                         <a href="{{url('view/Magic')}}" class="w3-bar-item w3-button">Card List</a>
                     @elseif($demo =="Force of Will")
                         <a href="{{url('view/Force of Will')}}" class="w3-bar-item w3-button">Card List</a>
-                    @elseif($demo =="yugiho")
+                    @elseif($demo =="Yu-Gi-Oh")
                         <a href="{{url('view/yugiho')}}" class="w3-bar-item w3-button">Card List</a>
                     @else
                         <a href="{{url('view/pokemon')}}" class="w3-bar-item w3-button">Card List</a>
@@ -65,8 +65,8 @@
                 <div id="dropdown-content">
                     <a href="{{url('/Force of Will')}}">Force of will</a>
                     <a href="{{url('/Magic')}}">Magic</a>
-                    <a href="{{url('/yugiho')}}">Yu-gi-ho</a>
-                    <a href="{{url('/pokemon')}}">pokemon</a>
+                    <a href="{{url('/yugiho')}}">Yu-Gi-Oh</a>
+                    <a href="{{url('/pokemon')}}">Pokémon</a>
                 </div>
             </div>
             <ul class="navbar-nav mr-auto"></ul>
