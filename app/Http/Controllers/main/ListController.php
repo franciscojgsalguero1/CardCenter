@@ -135,22 +135,13 @@ class ListController extends Controller {
 
         return redirect()->action('main\ListController@read_one', ['id' => $card]);
     }
-    public function test($id){
-        $game;
-        if($id =="fow"){
-            $game="Force of will";
-        }elseif($id =="magic"){
-            $game = "magic";
-        }elseif($id =="pokemon"){
-            $game ="pokemon";
-        }else{
-            $game="yu-gi-ho";
-        }
+    
+    public function test($id) {
         return response()->view('main',[
             'first_cards' => Card::all()->sortBy('updated_at')->take(10),
             'cardlist' => CardList::all()->sortBy('price')->take(10),
             'all_cards' => Card::all(),
-            'id' => $game   
+            'id' => $id   
         ]); 
     }
 }

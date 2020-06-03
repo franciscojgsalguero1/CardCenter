@@ -36,14 +36,14 @@
                 <a href="{{url('/')}}" class="w3-bar-item w3-button">Home</a>
                 @if($demo ?? '')
                 
-                    @if($demo =="Magic")
-                        <a href="{{url('view/Magic')}}" class="w3-bar-item w3-button">Card List</a>
+                    @if($demo =="Magic The Gathering")
+                        <a href="{{url('view/Magic The Gathering')}}" class="w3-bar-item w3-button">Card List</a>
                     @elseif($demo =="Force of Will")
                         <a href="{{url('view/Force of Will')}}" class="w3-bar-item w3-button">Card List</a>
                     @elseif($demo =="Yu-Gi-Oh")
-                        <a href="{{url('view/yugiho')}}" class="w3-bar-item w3-button">Card List</a>
+                        <a href="{{url('view/Yu-Gi-Oh')}}" class="w3-bar-item w3-button">Card List</a>
                     @else
-                        <a href="{{url('view/pokemon')}}" class="w3-bar-item w3-button">Card List</a>
+                        <a href="{{url('view/Pokémon')}}" class="w3-bar-item w3-button">Card List</a>
                     @endif  
                 @else 
                     <a href="{{url('view/Force of Will')}}" class="w3-bar-item w3-button">Card List</a>                                    
@@ -64,9 +64,9 @@
                 <button class="dropbtn" onclick="gameMenu()">Game</button>
                 <div id="dropdown-content">
                     <a href="{{url('/Force of Will')}}">Force of will</a>
-                    <a href="{{url('/Magic')}}">Magic</a>
-                    <a href="{{url('/yugiho')}}">Yu-Gi-Oh</a>
-                    <a href="{{url('/pokemon')}}">Pokémon</a>
+                    <a href="{{url('/Magic The Gathering')}}">Magic The Gathering</a>
+                    <a href="{{url('/Yu-Gi-Oh')}}">Yu-Gi-Oh</a>
+                    <a href="{{url('/Pokémon')}}">Pokémon</a>
                 </div>
             </div>
             <ul class="navbar-nav mr-auto"></ul>

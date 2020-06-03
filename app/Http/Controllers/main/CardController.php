@@ -55,7 +55,7 @@ class CardController extends Controller {
     }
 
     public function viewjuego($juego) {
-        $cards = Card::all()->where('game' ,$juego);
+        $cards = Card::all()->where('game', $juego);
 
         $response = response()->view('view_cards', ['data' => $cards], 200);
         $response->header("Content-Type", $this->html);
@@ -86,7 +86,8 @@ class CardController extends Controller {
             'all_cards' => Card::all() 
         ]); 
     }
-     public function mainGames($id){
+
+    public function mainGames($id){
         $salida =[];
         $carta = Card::all();
         $venta = CardList::all();
@@ -105,8 +106,5 @@ class CardController extends Controller {
             'all_cards' => Card::all(),
             'id' => $id
         ]); 
-        
-
     }
-
 }
