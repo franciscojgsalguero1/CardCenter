@@ -55,11 +55,4 @@ class HomeController extends Controller
         return redirect()->back()->with("success","Password changed successfully !");
 
     }
-
-    public function session(Request $request)
-    {
-        session(['Maria'=>'Estudiante']);
-        //$request->session()->forget('Maria');
-        return $request->session()->all();
-    }
 }
