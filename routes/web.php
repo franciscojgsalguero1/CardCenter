@@ -25,3 +25,20 @@ Route::get('/{id}', "main\CardController@anotherGame");
 /* User */
 Route::get('/changePassword', "HomeController@showChangePasswordForm");
 Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
+
+/* Carrito */
+
+Route::bind('cart', function($id){
+	return App\Card::where('id', $id)->first();
+});
+
+Route::get('cart/show', [
+	'as' => 'cart-show',
+	'uses' => 'CartController@show'
+	//'uses' => 'HomeController@session'
+]);
+
+Route::get('cart/add/{product}', [
+	'as' => 'cart-add',
+	'uses' => 'CartController@add']
+);
