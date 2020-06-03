@@ -1,4 +1,4 @@
-@extends('layouts.app', ['demo' => $id ?? ''])
+@extends('layouts.app', ['game' => $id ?? '' ?? ''])
 
 @section('content')
 <div id="demo" class="carousel slide" data-ride="carousel">
@@ -8,16 +8,53 @@
         <li data-target="#demo" data-slide-to="1"></li>
         <li data-target="#demo" data-slide-to="2"></li>
     </ul>
+
+    @switch ($id ?? '')
+        @case ("Force of Will")
+            @php
+                $src1 = "https://d12h0em1d7ppg.cloudfront.net/content/banner/249c0c96-8089-4af4-a3f2-d01f71db5d5f.jpg";
+                $src2 = "https://www.fowsystem.com/fr/Images/rhl9BAg/bRaTBj6jxtpZhg==/files/TCGFACTORY%20Y%20FOW%20INTERIOR.jpg";
+                $src3 = "https://cdn.shopify.com/s/files/1/2375/2517/products/prewviewa_1024x1024.jpg?v=1521443530";
+            @endphp
+            @break
+        @case ("Magic The Gathering")
+            @php
+                $src1 = "https://i.ytimg.com/vi/dghBjvR6oic/maxresdefault.jpg";
+                $src2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSs-uPHdnyCq5_UQPRGxVwu4CbyIAC_J1tXr6tG44ESBLtNQM5Y&usqp=CAU";
+                $src3 = "https://mtgproshop.com/wp-content/uploads/2018/08/Poster-set.jpg";
+            @endphp
+            @break
+        @case ("Pokémon")
+            @php
+                $src1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTaNVpJoCQzWF5rO_CxmMstKQgLudTCT_uJSdakRap8WuMU1urQ&usqp=CAU";
+                $src2 = "https://www.gtsdistribution.com/images/POKEMON_L.JPG";
+                $src3 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRQbZisv90YtzZP5hOZr0fMinDK1S6biQBbWLuoXCTjqWDdIqmY&usqp=CAU";
+            @endphp
+            @break
+        @case ("Yu-Gi-Oh")
+            @php
+                $src1 = "https://as.com/meristation/imagenes/2019/09/19/header_image/531856241568917546.jpg";
+                $src2 = "https://static.fandomspot.com/images/08/1817/00-featured-best-yugioh-games-ever-seto-and-yami.jpg";
+                $src3 = "https://as.com/meristation/imagenes/2019/05/06/noticias/1557134804_813638_1557134858_noticia_normal.jpg";
+            @endphp
+            @break
+        @default
+            @php
+                $src1 = "https://d12h0em1d7ppg.cloudfront.net/content/banner/249c0c96-8089-4af4-a3f2-d01f71db5d5f.jpg";
+                $src2 = "https://www.fowsystem.com/fr/Images/rhl9BAg/bRaTBj6jxtpZhg==/files/TCGFACTORY%20Y%20FOW%20INTERIOR.jpg";
+                $src3 = "https://cdn.shopify.com/s/files/1/2375/2517/products/prewviewa_1024x1024.jpg?v=1521443530";
+            @endphp
+    @endswitch
     <!-- The slideshow -->
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="https://www.fowsystem.com/fr/Images/rhl9BAg/bRaTBj6jxtpZhg==/files/TCGFACTORY%20Y%20FOW%20INTERIOR.jpg" alt="Los Angeles" width="100%" height="300">
+            <img src="{{$src1}}" alt="Image 1" width="100%" height="300">
         </div>
         <div class="carousel-item">
-            <img src="https://www.fowsystem.com/fr/Images/rhl9BAg/bRaTBj6jxtpZhg==/files/TCGFACTORY%20Y%20FOW%20INTERIOR.jpg" alt="Chicago" width="100%" height="300">
+            <img src="{{$src2}}" alt="Image 2" width="100%" height="300">
         </div>
         <div class="carousel-item">
-            <img src="https://www.fowsystem.com/fr/Images/rhl9BAg/bRaTBj6jxtpZhg==/files/TCGFACTORY%20Y%20FOW%20INTERIOR.jpg" alt="New York" width="100%" height="300">
+            <img src="{{$src3}}" alt="Image 3" width="100%" height="300">
         </div>
     </div>
 
@@ -31,7 +68,7 @@
 </div>
 <div class="flex-container-main" style="margin:0">
     <div>
-        <h1 class="titulos">Lastt Add</h1>
+        <h1 class="titulos">Last Add</h1>
     </div>
     <div>
         <h1 class="titulos">Best Price</h1>

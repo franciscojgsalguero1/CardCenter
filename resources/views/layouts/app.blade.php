@@ -34,19 +34,10 @@
                     Close &times;
                 </button>
                 <a href="{{url('/')}}" class="w3-bar-item w3-button">Home</a>
-                @if($demo ?? '')
-                
-                    @if($demo =="Magic The Gathering")
-                        <a href="{{url('view/Magic The Gathering')}}" class="w3-bar-item w3-button">Card List</a>
-                    @elseif($demo =="Force of Will")
-                        <a href="{{url('view/Force of Will')}}" class="w3-bar-item w3-button">Card List</a>
-                    @elseif($demo =="Yu-Gi-Oh")
-                        <a href="{{url('view/Yu-Gi-Oh')}}" class="w3-bar-item w3-button">Card List</a>
-                    @else
-                        <a href="{{url('view/Pokémon')}}" class="w3-bar-item w3-button">Card List</a>
-                    @endif  
+                @if ($game ?? '')
+                    <a href="{{url('view_game/'.$game)}}" class="w3-bar-item w3-button">Card List</a>
                 @else 
-                    <a href="{{url('view/Force of Will')}}" class="w3-bar-item w3-button">Card List</a>                                    
+                    <a href="{{url('view_game/Force of Will')}}" class="w3-bar-item w3-button">Card List</a>
                 @endif
                 @auth         
                     <a href="{{url('changePassword/')}}" class="w3-bar-item w3-button">Change Password</a>

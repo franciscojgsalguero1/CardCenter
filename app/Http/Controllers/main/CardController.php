@@ -87,7 +87,7 @@ class CardController extends Controller {
         ]); 
     }
 
-    public function mainGames($id){
+    public function anotherGame($id){
         $salida =[];
         $carta = Card::all();
         $venta = CardList::all();
