@@ -266,13 +266,15 @@
 										</button>
 										<form action="{{url('api/transactions')}}" method="post" style="display:none;" id="{{'buy'.$item->id}}">
 											<input type="hidden" value="{{$item->name}}" name="card_name">
+											<input type="hidden" value="{{$item->language}}" name="language">
+											<input type="hidden" value="{{$item->condition}}" name="condition">
 											<input type="hidden" value="{{$item->id}}" name="card_seller_id">
 											<input type="hidden" value="{{$item->seller}}" name="seller">
 											<input type="hidden" value="{{Auth::user()->username}}" name="buyer">
 											<select name="t_quantity" >
 												@for ($i = 1; $i <= $item->quantity; $i++)
 													<option value="{{$i}}">{{$i}}</option>
-												@endfor	
+												@endfor
 											</select>
 											<input type="hidden" value="{{$item->price}}" name="price_unit">
 											{{--{{csrf_field()}}--}}

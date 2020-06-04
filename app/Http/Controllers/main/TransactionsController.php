@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Transactions;
 use App\CardList;
 use App\Card;
-use \stdClass;
 
 class TransactionsController extends Controller {
 
@@ -28,26 +27,6 @@ class TransactionsController extends Controller {
         return redirect()->action('main\ListController@read_one', ['id' => $card]);
     }
 
-    public function transactionToBuy($name){   
-        $venta = Transactions::where('buyer', $name)->get();
-        return response()->view('transacction', ['transacction' => $venta]);
-    }
-
-    public function add($id , $cantidad, $venta){
-        $seller = CardList::find($venta);
-        $seller->quantity -=$cantidad;
-        $seller->save();
-        $this->transactionCompletada($id);
-        }
-
-    public function transactionCompletada($id){
-        $usuario = Transactions::find($id);
-        $now = date("Y-m-d");
-        $usuario->date_paid = $now;
-        $usuario->save();
-        //$usuario->delete();
-    }
-
     public function show($id) {
         $transaction = Transactions::find($id);
     }
@@ -59,71 +38,43 @@ class TransactionsController extends Controller {
         $transaction->date_recieved = $this->getDateRecieved();
         $transaction->save();
     }
-    public function deleteTransaction($id){
-        $transaction = Transactions::find($id);
-        $transaction->delete();
-        return resposne()->view('/');
-    }
-
-    // en proceso
 
     public function destroy($id) {
-        return redirect()->route('compra');
+        $transaction = Transactions::find($id);
+        $transaction->delete();
     }
+
     public function restore($id) {
         $transaction = Transactions::withTrashed()->find($id)->restore();
     }
 
-    public function cart_view() {
-        $card1 = new stdClass();
-        $card1->id = 12;
-        $card1->name = 'Alice';
-        $card1->seller = "test";
-        $card1->price = 5;
-        $card1->quantity = 12;
-        $card2 = new stdClass();
-        $card2->id = 11;
-        $card2->name = 'Alice2';
-        $card2->seller = "test2";
-        $card2->price = 2;
-        $card2->quantity = 14;
-        $card3 = new stdClass();
-        $card3->id = 10;
-        $card3->name = 'Alice3';
-        $card3->seller = "test3";
-        $card3->price = 15;
-        $card3->quantity = 15;
+    /*
+    * Controller Methods
+    */
 
-        $items = [$card1, $card2, $card3];
+    public function transactionToBuy($name){   
+        $transaction = Transactions::where('buyer', $name)->
+                        where('status', 'added')->get();
+        return response()->view('transaction', ['transaction' => $transaction]);
+    }
 
-        $cart = array(
-            "seller" => 'test',
-            "buyer" => 'test2',
-            "t_quantity" => $this->getTotalQuantity(),
-            "t_price" => $this->getTotalPrice(),
-            "status" => "paid"
-        );
+    public function buyAllItems($name) {
+        $transactions = $transaction = Transactions::where('buyer', $name)->where('status', 'added')->get();
 
-        $card_list = array();
-
-        foreach ($items as $item) {
-            $list = new stdClass();
-            $list->id = $item->id;
-            $list->name = $item->name;
-            $list->price = $item->price;
-            $list->quantity = $item->quantity;
-
-            array_push($card_list, $list);
+        foreach ($transactions as $transaction) {
+            $transaction->status = "sold";
+            $transaction->date_paid = date("Y-m-d");
+            $transaction->save();
         }
 
-        return response()->view('view_cart', ['card' => $cart, 'card_list' => $card_list]);
+        return redirect()->back();
     }
 
-    private function getTotalQuantity() {
-        return 7;
-    }
 
-    private function getTotalPrice() {
-        return 17;
+    public function deleteTransaction($id){
+        $transaction = Transactions::find($id);
+        $transaction->delete();
+        
+        return redirect()->back();
     }
 }

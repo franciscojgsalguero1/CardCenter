@@ -40,11 +40,14 @@
                     <a href="{{url('view_game/Force of Will')}}" class="w3-bar-item w3-button">Card List</a>
                 @endif
                 @auth         
-                    <a href="{{url('changePassword/')}}" class="w3-bar-item w3-button">Change Password</a>
+                    <a href="{{url('/user/changePassword/')}}" class="w3-bar-item w3-button">Change Password</a>
                     @if (Auth::user()->type == "admin")
                         <a href="{{url('add/')}}" class="w3-bar-item w3-button">Add carts</a>
                     @endif
                 @endauth
+                @guest
+                    <a href="{{url('/user/recoverPassword/')}}" class="w3-bar-item w3-button">Recover Password</a>
+                @endguest
             </div>
             <div id="main">
                 <div class="w3-Light Gray">

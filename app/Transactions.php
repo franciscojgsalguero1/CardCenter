@@ -10,8 +10,12 @@ class Transactions extends Model {
 
     protected $fillable = [
         'seller',
+        'card_name',
+        'language',
+        'condition',
         'card_seller_id',
         'buyer',
+        'status',
         't_quantity',
         'price_unit',
         'total_price',

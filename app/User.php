@@ -18,6 +18,8 @@ class User extends Authenticatable {
         'phone_number',
         'email',
         'password',
+        'question',
+        'answer',
         'balance',
         'street',
         'street_num',

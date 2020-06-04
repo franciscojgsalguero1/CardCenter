@@ -19,29 +19,14 @@ Route::get('/delete/{id}/', "main\ListController@deleteList");
 
 /* Transactions */
 Route::get('/cart_view/{user}', "main\TransactionsController@transactionToBuy");
-Route::get('/', "main\CardController@main");
+Route::get('/', "main\CardController@main")->name('main');
 Route::get('/{id}', "main\CardController@anotherGame");
 Route::get('/transaction_delete/{id}' ,"main\TransactionsController@deleteTransaction")->name('compra');
-Route::get('/transaction_add/{cart}/{cantidad}/{transaccion}', "main\TransactionsController@add");
-
+Route::get('/transaction_add/{cart}/{cantidad}/{transaccion}', "main\TransactionsController@confirmBuy");
+Route::get('/confirm/button_buy_all/{name}', "main\TransactionsController@buyAllItems");
 
 /* User */
-Route::get('/changePassword', "HomeController@showChangePasswordForm");
-Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
-
-/* Carrito */
-
-Route::bind('cart', function($id){
-	return App\Card::where('id', $id)->first();
-});
-
-Route::get('cart/show', [
-	'as' => 'cart-show',
-	'uses' => 'CartController@show'
-	//'uses' => 'HomeController@session'
-]);
-
-Route::get('cart/add/{product}', [
-	'as' => 'cart-add',
-	'uses' => 'CartController@add']
-);
+Route::get('/user/changePassword', "HomeController@showChangePasswordForm");
+Route::post('/user/changePassword','HomeController@changePassword')->name('changePassword');
+Route::get('/user/recoverPassword', "RecoverPasswordController@showRecoverPasswordForm");
+Route::post('/user/recoverPassword', "RecoverPasswordController@recoverPassword")->name('recoverPassword');

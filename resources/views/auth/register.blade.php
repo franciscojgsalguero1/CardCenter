@@ -90,6 +90,26 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="question" class="col-md-4 col-form-label text-md-right">{{ __('Question') }}</label>
+                            <div class="col-md-6">
+                                <select id="question" name="question" required>
+                                    <option>What is the first name of the person you first kissed?</option>
+                                    <option>What is the name of the teacher you liked the most?</option>
+                                    <option>What was the name of your elementary school?</option>
+                                    <option>What is your mother's maiden name?</option>
+                                    <option>What is the name of your first pet?</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="answer" class="col-md-4 col-form-label text-md-right">{{ __('Answer') }}</label>
+                            <div class="col-md-6">
+                                <input id="answer" type="text" class="form-control" name="answer" required placeholder="Secret Answer">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

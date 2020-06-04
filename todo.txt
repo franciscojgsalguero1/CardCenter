@@ -1,23 +1,14 @@
 Ivan:
-??. TransactionsController -> review CRUD update method.
-??. Transactions. -> WIP (esperando que fran haga el Carrito).
+1. create another field in user and register form (secret questions/answer)
+2. Recover password by asking the secret question
+3. modify change password form (auth->usual, guest->change)
 
 ??. antes de entregar, comprobar nombres de variables, indentacion, quitar cosas que sobran.
 
 Alberto:
 ??. Home page WIP (Alberto).
 
+
 Fran:
-??. Shopping cart (se ocupa Fran).
-??. remove <br> from read one (Fran)
 ??. Visual.
 ??. Documentacion.
-
-
-Preguntar a Randion:
-- La presentacion: Necesitamos una presentacion en un fichero o lo hacemos live?
-- Tenemos que hacer el CRUD aparte?
-- si los correos fallan, podemos hacer un form con preguntas, y en caso de que las preguntas se contestan bien, lleva al usuario a otro form donde cambia su constrasena?
-
-Pendiente hablar con Randion:
-- Correos creacion cuenta y cambio contrasena.
