@@ -77,6 +77,8 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="logoutMenu()">
                             {{ Auth::user()->username }} <span class="caret"></span>
                         </a>
+                        <a href="{{url('/cart_view',Auth::user()->username)}}">asd
+                        </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="pruebas">
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

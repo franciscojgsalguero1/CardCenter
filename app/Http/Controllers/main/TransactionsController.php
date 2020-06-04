@@ -4,7 +4,8 @@ namespace App\Http\Controllers\main;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Transactions as Tx;
+use App\Transactions;
+use App\CardList;
 use App\Card;
 use \stdClass;
 
@@ -15,43 +16,63 @@ class TransactionsController extends Controller {
     */
 
     public function index() {
-        $transaction = Tx::all();
+        $transaction = Transactions::all();
     }
 
     public function store(Request $request) {
-        $transaction = Tx::create($request->all());
-        $name=$request->input('card_name');
+        $transaction = Transactions::create($request->all());
+        $name = $request->input('card_name');
         $id = Card::where('name', $name)->get('id');
         $card = Card::find($id[0]['id']);
 
         return redirect()->action('main\ListController@read_one', ['id' => $card]);
     }
 
+    public function transactionToBuy($name){   
+        $venta = Transactions::where('buyer', $name)->get();
+        return response()->view('transacction', ['transacction' => $venta]);
+    }
+
+    public function add($id , $cantidad, $venta){
+        $seller = CardList::find($venta);
+        $seller->quantity -=$cantidad;
+        $seller->save();
+        $this->transactionCompletada($id);
+        }
+
+    public function transactionCompletada($id){
+        $usuario = Transactions::find($id);
+        $now = date("Y-m-d");
+        $usuario->date_paid = $now;
+        $usuario->save();
+        //$usuario->delete();
+    }
+
     public function show($id) {
-        $transaction = Tx::find($id);
+        $transaction = Transactions::find($id);
     }
 
     public function update(Request $request, $id) {
-        $transaction = Tx::find($id);
-
+        $transaction = Transactions::find($id);
         $transaction->status = $this->getStatus();
         $transaction->certified = $this->isCertified();
         $transaction->date_recieved = $this->getDateRecieved();
         $transaction->save();
     }
+    public function deleteTransaction($id){
+        $transaction = Transactions::find($id);
+        $transaction->delete();
+        return resposne()->view('/');
+    }
+
+    // en proceso
 
     public function destroy($id) {
-        $transaction = Tx::find($id);
-        $transaction->delete();
+        return redirect()->route('compra');
     }
-
     public function restore($id) {
-        $transaction = Tx::withTrashed()->find($id)->restore();
+        $transaction = Transactions::withTrashed()->find($id)->restore();
     }
-
-    /*
-    * Controller Methods
-    */
 
     public function cart_view() {
         $card1 = new stdClass();

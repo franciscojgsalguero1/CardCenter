@@ -18,9 +18,12 @@ Route::get('/view/{id}/', "main\ListController@read_one");
 Route::get('/delete/{id}/', "main\ListController@deleteList");
 
 /* Transactions */
-Route::get('/cart_view/', "main\TransactionsController@cart_view");
+Route::get('/cart_view/{user}', "main\TransactionsController@transactionToBuy");
 Route::get('/', "main\CardController@main");
 Route::get('/{id}', "main\CardController@anotherGame");
+Route::get('/transaction_delete/{id}' ,"main\TransactionsController@deleteTransaction")->name('compra');
+Route::get('/transaction_add/{cart}/{cantidad}/{transaccion}', "main\TransactionsController@add");
+
 
 /* User */
 Route::get('/changePassword', "HomeController@showChangePasswordForm");
