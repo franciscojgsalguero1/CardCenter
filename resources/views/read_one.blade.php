@@ -62,13 +62,10 @@
 					</select><br>
 					<label for="cnd">Condition</label>
 					<select id="cnd" name="condition">
-						<option value="Mint">Mint</option>
 						<option selected value="Near Mint">Near Mint</option>
 						<option value="Excellent">Excellent</option>
 						<option value="Good">Good</option>
-						<option value="Light Played">Light Played</option>
-						<option value="Played">Played</option>
-						<option value="Poor">Poors</option>
+						<option value="Poor">Poor</option>
 					</select><br>
 					<label for="comment">Comments</label>
 					<input type="text" id="comment" name="comment"><br>
@@ -122,12 +119,26 @@
 								@php ($flag = "https://www.countryflags.io/cn/flat/64.png")
 								@break
 						@endswitch
+						@switch($item->condition)
+							@case("Near Mint")
+								@php ($condition = "fas fa-laugh-beam text-success")
+								@break
+							@case("Excellent")
+								@php ($condition = "fas fa-smile-beam text-success")
+								@break
+							@case("Good")
+								@php ($condition = "fas fa-smile-beam text-dark")
+								@break
+							@case("Poor")
+								@php ($condition = "fas fa-sad-cry text-danger")
+								@break
+						@endswitch
 						<tr>
 							@auth
 								@if ($item->seller == Auth::user()->username)
 									<td>{{$item->seller}}</td>
 									<td>
-										<span>{{$item->condition}}</span>
+										<span><i  title="{{$item->condition}}" class="{{$condition}}"></i></span>
 										<img class="flag" src="{{$flag}}">
 										@if ($item->fullart == 1)
 											<i class="fab fa-foursquare" data-toggle="tooltip" data-placement="bottom" title="Full art"></i>
@@ -174,13 +185,10 @@
 												</select><br>
 												<label for="{{'cnd'.$item->id}}">Condition</label>
 												<select id="{{'cnd'.$item->id}}" name="condition">
-													<option value="Mint">Mint</option>
 													<option selected value="Near Mint">Near Mint</option>
 													<option value="Excellent">Excellent</option>
 													<option value="Good">Good</option>
-													<option value="Light Played">Light Played</option>
-													<option value="Played">Played</option>
-													<option value="Poor">Poors</option>
+													<option value="Poor">Poor</option>
 												</select><br>
 												<label for="{{'comment'.$item->id}}">Comments</label>
 												<input type="text" id="{{'comment'.$item->id}}" value="{{$item->comment}}" name="comment"><br>
@@ -234,12 +242,26 @@
 								@php ($flag = "https://www.countryflags.io/cn/flat/64.png")
 								@break
 						@endswitch
+						@switch($item->condition)
+							@case("Near Mint")
+								@php ($condition = "fas fa-laugh-beam text-success")
+								@break
+							@case("Excellent")
+								@php ($condition = "fas fa-smile-beam text-success")
+								@break
+							@case("Good")
+								@php ($condition = "fas fa-smile-beam text-dark")
+								@break
+							@case("Poor")
+								@php ($condition = "fas fa-sad-cry text-danger")
+								@break
+						@endswitch
 						<tr>
 							@auth
 								@if ($item->seller != Auth::user()->username)
 									<td>{{$item->seller}}</td>
 									<td>
-										<span>{{$item->condition}}</span>
+										<span><i title="{{$item->condition}}" class="{{$condition}}"></i></span>
 										<img class="flag" src="{{$flag}}">
 										@if ($item->fullart == 1)
 											<i class="fab fa-foursquare" data-toggle="tooltip" data-placement="bottom" title="Full art"></i>
@@ -273,7 +295,11 @@
 											<input type="hidden" value="{{Auth::user()->username}}" name="buyer">
 											<select name="t_quantity" >
 												@for ($i = 1; $i <= $item->quantity; $i++)
-													<option value="{{$i}}">{{$i}}</option>
+													@if($i==$item->quantity)
+														<option selected value="{{$i}}">{{$i}}</option>
+													@else
+														<option value="{{$i}}">{{$i}}</option>
+													@endif
 												@endfor
 											</select>
 											<input type="hidden" value="{{$item->price}}" name="price_unit">
@@ -286,7 +312,7 @@
 							@guest
 								<td>{{$item->seller}}</td>
 								<td>
-									<span>{{$item->condition}}</span>
+									<span ><i title="{{$item->condition}}" class="{{$condition}}"></i></span>
 									<img class="flag" src="{{$flag}}"> 
 									@if ($item->fullart == 1)
 										<i class="fab fa-foursquare" data-toggle="tooltip" data-placement="bottom" title="Full art"></i>

@@ -10,7 +10,7 @@
 		<table id="info-card">
 			<th>Card Name</th>
 			<th>Seller</th>
-			<th>Product Information</th>
+			<th>Information</th>
 			<th>Price</th>
 			<th>Quantity</th>
 			@foreach($purchases as $purchase)
@@ -37,10 +37,25 @@
 									@php ($flag = "https://www.countryflags.io/cn/flat/64.png")
 									@break
 							@endswitch
+							@switch($purchase->condition)
+								@case("Near Mint")
+									@php ($condition = "fas fa-laugh-beam text-success")
+									@break
+								@case("Excellent")
+									@php ($condition = "fas fa-smile-beam text-success")
+									@break
+								@case("Good")
+									@php ($condition = "fas fa-smile-beam text-dark")
+									@break
+								@case("Poor")
+									@php ($condition = "fas fa-sad-cry text-danger")
+									@break
+							@endswitch
 				<tr>
 					<td>{{$purchase->card_name}}</td>
 					<td>{{$purchase->seller}}</td>
-					<td><span>{{$purchase->condition}}</span><img class="flag" src="{{$flag}}"></td>
+					<td><span><i  title="{{$purchase->condition}}" class="{{$condition}}"></i></span>
+						<img class="flag" src="{{$flag}}"></td>
 					<td>{{$purchase->price_unit}}€</td>
 					<td>{{$purchase->t_quantity}}</td>
 				</tr>
