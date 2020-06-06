@@ -3,7 +3,6 @@ Ivan:
 
 Alberto:
 ??. Home page WIP (Alberto).
-3. create transactions view
 
 Others:
 ??. Visual.

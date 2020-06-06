@@ -93,7 +93,8 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="pruebas">
                             <a class="dropdown-item" href="{{ route('showDetails') }}">{{ __('User Details')}}</a>
-                             <a class="dropdown-item" href="{{ route('see_transaction') }}">{{ __('Transactions')}}</a>
+                             <a class="dropdown-item" href="{{ route('purchases') }}">{{ __('Purchases')}}</a>
+                             <a class="dropdown-item" href="{{ route('sales') }}">{{ __('Sales')}}</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>

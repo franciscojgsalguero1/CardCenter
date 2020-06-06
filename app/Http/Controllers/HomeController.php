@@ -67,13 +67,18 @@ class HomeController extends Controller {
     public function showDetails() {
         return view('showDetails');
     }
-    public function see_transaction(){
+    public function purchases(){
         $user = Auth::user()->username;
         $purchases = Transactions::where('buyer', $user)->where('status', 'sold')->get();
+       
+        return response()->view('purchases',[
+            'purchases' => $purchases]);
+    }
+        public function sales(){
+        $user = Auth::user()->username;
         $sales = Transactions::where('seller', $user)->where('status', 'sold')->get();
 
-        return response()->view('see_transaction',[
-            'purchases' => $purchases,
+        return response()->view('sales',[
             'sales' => $sales]);
     }
 }

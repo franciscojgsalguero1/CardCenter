@@ -34,4 +34,5 @@ Route::post('/user/recoverPassword', "RecoverPasswordController@recoverPassword"
 Route::get('/user/updateAccountDetails', "HomeController@showUpdateAccountDetailsForm");
 Route::post('/user/updateAccountDetails', "HomeController@updateAccountDetails")->name('updateAccountDetails');
 Route::get('/user/showDetails', "HomeController@showDetails")->name("showDetails");
-Route::get('/user/see_transaction', "HomeController@see_transaction")->name('see_transaction');
+Route::get('/user/purchases', "HomeController@purchases")->name('purchases');
+Route::get('/user/sales', "HomeController@sales")->name('sales');
