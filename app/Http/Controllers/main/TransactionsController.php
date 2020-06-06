@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Transactions;
 use App\CardList;
 use App\Card;
+use App\User;
 
 class TransactionsController extends Controller {
 
@@ -60,11 +61,28 @@ class TransactionsController extends Controller {
 
     public function buyAllItems($name) {
         $transactions = $transaction = Transactions::where('buyer', $name)->where('status', 'added')->get();
+        $buyer_id = User::where('username', $name)->get('id');
+        $buyer = User::find($buyer_id[0]['id']);
+        $total_purchase_price = 0;
 
         foreach ($transactions as $transaction) {
-            $transaction->status = "sold";
-            $transaction->date_paid = date("Y-m-d");
-            $transaction->save();
+            $seller_id = User::where('username', $transaction->seller)->get('id');
+            $seller = User::find($seller_id[0]['id']);
+            $total_price = $transaction->t_quantity * $transaction->price_unit;
+            $total_purchase_price = $total_purchase_price + $total_price;
+            
+        }
+
+        if ($buyer->balance >= $total_purchase_price) {
+            foreach ($transactions as $transaction) {
+                $seller->balance = $seller->balance + $total_purchase_price;
+                $seller->save();
+                $buyer->balance = $buyer->balance - $total_purchase_price;
+                $buyer->save();
+                $transaction->status = "sold";
+                $transaction->date_paid = date("Y-m-d");
+                $transaction->save();
+            }
         }
 
         return redirect()->back();

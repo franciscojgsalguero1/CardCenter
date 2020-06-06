@@ -1,15 +1,11 @@
 Ivan:
-2. add balance to accounts and show it somewhere
-3. subtract money from balance on purchase
-4. create transactions view
-5. create user details view
+4. create user details view
 
 ??. antes de entregar, comprobar nombres de variables, indentacion, quitar cosas que sobran.
 
 Alberto:
 ??. Home page WIP (Alberto).
-
-
+3. create transactions view
 
 
 ??. Visual.
