@@ -1,4 +1,7 @@
-@extends('layouts.app', ['game' => $id ?? '' ?? ''])
+@extends('layouts.app', [
+    'game' => $id ?? '',
+    'transactions' => $transactions ?? ''
+    ])
 
 @section('content')
 <div id="demo" class="carousel slide" data-ride="carousel">

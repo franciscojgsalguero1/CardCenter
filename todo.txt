@@ -10,3 +10,4 @@ Alberto:
 
 ??. Visual.
 ??. Documentacion.
+- when a card goes to 0, delete it

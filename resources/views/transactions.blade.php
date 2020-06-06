@@ -10,7 +10,7 @@
 		<th>Cancel</th>
 		@php ($total_compra=0)
 		@php ($cantidad_total=0)
-		@foreach($transaction as $card)
+		@foreach($transactions as $card)
 			@php($total_compra += $card->t_quantity * $card->price_unit)
 			@php($cantidad_total += $card->t_quantity)
 			<tr>
@@ -21,11 +21,16 @@
 					<span>{{$card->language}}</span>
 				</td>
 				<td>
-					<span>{{$card->price_unit}}</span>
-					<span>{{$card->t_quantity}}</span>
+					<span>{{$card->price_unit}}€</span>
+					<select id="card_counter">
+						@php ($i=1)
+						@for (; $i <= $card->t_quantity; $i++)
+							<option id="{{$i}}" value="{{$i}}">{{$i}}</option>
+						@endfor
+					</select>
 				</td>
 				<td>
-					<button class="btn"><a href="{{url('transaction_delete/'.$card->id)}}"><i class="fas fa-trash-alt"></i></a></button>
+					<button class="btn"><a id="button_delete" href="{{url('transaction_delete/'.$card->id.'/1')}}"><i class="fas fa-trash-alt"></i></a></button>
 				</td>
 			</tr>
 		@endforeach

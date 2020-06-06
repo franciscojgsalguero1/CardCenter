@@ -62,4 +62,8 @@ class HomeController extends Controller {
 
         return redirect()->route('main');
     }
+    
+    public function showDetails() {
+        return view('showDetails');
+    }
 }

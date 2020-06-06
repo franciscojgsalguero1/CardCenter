@@ -13,7 +13,7 @@ class Transactions extends Model {
         'card_name',
         'language',
         'condition',
-        'card_seller_id',
+        'card_id',
         'buyer',
         'status',
         't_quantity',

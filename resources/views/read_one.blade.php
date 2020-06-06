@@ -33,7 +33,7 @@
 				<td>{{$card->quantity}}</td>
 			</tr>
 			<tr>
-				<td>Raraity:</td>
+				<td>Rarity:</td>
 				<td>{{$card->rarity}}</td>
 			</tr>
 			<tr>
@@ -268,7 +268,7 @@
 											<input type="hidden" value="{{$item->name}}" name="card_name">
 											<input type="hidden" value="{{$item->language}}" name="language">
 											<input type="hidden" value="{{$item->condition}}" name="condition">
-											<input type="hidden" value="{{$item->id}}" name="card_seller_id">
+											<input type="hidden" value="{{$item->id}}" name="card_id">
 											<input type="hidden" value="{{$item->seller}}" name="seller">
 											<input type="hidden" value="{{Auth::user()->username}}" name="buyer">
 											<select name="t_quantity" >

@@ -78,7 +78,7 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="logoutMenu()">
+                        <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="logoutMenu()">
                             <span>{{ Auth::user()->username }}</span>
                             @if (Auth::user()->balance == 0)
                                 <span class="text-danger">(0.00)</span>
@@ -87,9 +87,12 @@
                             @endif
                             <span class="caret"></span>
                         </a>
-                        <a href="{{url('/cart_view', Auth::user()->username)}}">asd</a>
+                        <a href="{{url('/cart_view', Auth::user()->username)}}">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="pruebas">
+                            <a class="dropdown-item" href="{{ route('showDetails') }}">{{ __('User Details')}}</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>

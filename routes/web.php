@@ -21,7 +21,7 @@ Route::get('/delete/{id}/', "main\ListController@deleteList");
 Route::get('/cart_view/{user}', "main\TransactionsController@transactionToBuy");
 Route::get('/', "main\CardController@main")->name('main');
 Route::get('/{id}', "main\CardController@anotherGame");
-Route::get('/transaction_delete/{id}' ,"main\TransactionsController@deleteTransaction")->name('compra');
+Route::get('/transaction_delete/{id}/{count}' ,"main\TransactionsController@deleteTransaction")->name('compra');
 Route::get('/transaction_add/{cart}/{cantidad}/{transaccion}', "main\TransactionsController@confirmBuy");
 Route::get('/confirm/button_buy_all/{name}', "main\TransactionsController@buyAllItems");
 
@@ -32,3 +32,4 @@ Route::get('/user/recoverPassword', "RecoverPasswordController@showRecoverPasswo
 Route::post('/user/recoverPassword', "RecoverPasswordController@recoverPassword")->name('recoverPassword');
 Route::get('/user/updateAccountDetails', "HomeController@showUpdateAccountDetailsForm");
 Route::post('/user/updateAccountDetails', "HomeController@updateAccountDetails")->name('updateAccountDetails');
+Route::get('/user/showDetails', "HomeController@showDetails")->name("showDetails");

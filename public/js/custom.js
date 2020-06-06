@@ -22,6 +22,7 @@ function logoutMenu() {
         document.getElementById("pruebas").style.display = "block";
     }
 }
+
 function gameMenu() {
     if (document.getElementById("dropdown-content").style.display == "block") {
         document.getElementById("dropdown-content").style.display = "none";
@@ -29,3 +30,12 @@ function gameMenu() {
         document.getElementById("dropdown-content").style.display = "block";
     }
 }
+
+$("#card_counter").change(function() {
+    let id = $(this).children(":selected").attr("id");
+    let link = $("#button_delete").attr('href');
+    link = link.slice(0, -2);
+    link = link + "/" +id;
+    let item = document.getElementById("button_delete");
+    item.setAttribute('href', link);
+});
