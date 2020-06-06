@@ -70,44 +70,44 @@ class TransactionsController extends Controller {
         $buyer = User::find($buyer_id[0]['id']);
         $total_purchase_price = 0;
 
-        foreach ($transactions as $transactions) {
-            $seller_id = User::where('username', $transactions->seller)->get('id');
+        foreach ($transactions as $transaction) {
+            $seller_id = User::where('username', $transaction->seller)->get('id');
             $seller = User::find($seller_id[0]['id']);
-            $total_price = $transactions->t_quantity * $transactions->price_unit;
+            $total_price = $transaction->t_quantity * $transaction->price_unit;
             $total_purchase_price = $total_purchase_price + $total_price;
         }
 
         if ($buyer->balance >= $total_purchase_price) {
-            foreach ($transactions as $transactions) {
+            foreach ($transactions as $transaction) {
                 // Obtaining objects
-                $seller_id = User::where('username', $transactions->seller)->get('id');
+                $seller_id = User::where('username', $transaction->seller)->get('id');
                 $seller = User::find($seller_id[0]['id']);
-                $card_id = Card::where("name", $transactions->card_name)->get('id');
+                $card_id = Card::where("name", $transaction->card_name)->get('id');
                 $card = User::find($card_id[0]['id']);
-                $cardlist = CardList::find($transactions->card_id);
+                $cardlist = CardList::find($transaction->card_id);
 
                 //Updating Seller                
-                $seller->balance = $seller->balance + ($transactions->price_unit * $transactions->t_quantity);
+                $seller->balance = $seller->balance + ($transaction->price_unit * $transaction->t_quantity);
                 $seller->save();
 
                 // Updating Buyer
-                $buyer->balance = $buyer->balance - ($transactions->price_unit * $transactions->t_quantity);
+                $buyer->balance = $buyer->balance - ($transaction->price_unit * $transaction->t_quantity);
                 $buyer->save();
 
                 //Updating Transactions
-                $transactions->status = "sold";
-                $transactions->date_paid = date("Y-m-d");
-                $transactions->save();
+                $transaction->status = "sold";
+                $transaction->date_paid = date("Y-m-d");
+                $transaction->save();
                 
                 //Updating Card
-                $card->quantity = $card->quantity - $transactions->t_quantity;
+                $card->quantity = $card->quantity - $transaction->t_quantity;
                 $card->save();
                 
                 //Updating Card List
-                if ($cardlist->quantity == $transactions->t_quantity) {
+                if ($cardlist->quantity == $transaction->t_quantity) {
                     $cardlist->delete();
                 } else {
-                    $cardlist->quantity = $cardlist->quantity - $transactions->t_quantity;
+                    $cardlist->quantity = $cardlist->quantity - $transaction->t_quantity;
                     $cardlist->save();
                 }
             }

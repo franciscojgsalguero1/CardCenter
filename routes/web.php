@@ -25,6 +25,7 @@ Route::get('/transaction_delete/{id}/{count}' ,"main\TransactionsController@dele
 Route::get('/transaction_add/{cart}/{cantidad}/{transaccion}', "main\TransactionsController@confirmBuy");
 Route::get('/confirm/button_buy_all/{name}', "main\TransactionsController@buyAllItems");
 
+
 /* User */
 Route::get('/user/changePassword', "HomeController@showChangePasswordForm");
 Route::post('/user/changePassword','HomeController@changePassword')->name('changePassword');
@@ -33,3 +34,4 @@ Route::post('/user/recoverPassword', "RecoverPasswordController@recoverPassword"
 Route::get('/user/updateAccountDetails', "HomeController@showUpdateAccountDetailsForm");
 Route::post('/user/updateAccountDetails', "HomeController@updateAccountDetails")->name('updateAccountDetails');
 Route::get('/user/showDetails', "HomeController@showDetails")->name("showDetails");
+Route::get('/user/see_transaction', "HomeController@see_transaction")->name('see_transaction');

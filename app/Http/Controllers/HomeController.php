@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Transactions;
 use Auth;
 
 class HomeController extends Controller {
@@ -65,5 +66,14 @@ class HomeController extends Controller {
     
     public function showDetails() {
         return view('showDetails');
+    }
+    public function see_transaction(){
+        $user = Auth::user()->username;
+        $purchases = Transactions::where('buyer', $user)->where('status', 'sold')->get();
+        $sales = Transactions::where('seller', $user)->where('status', 'sold')->get();
+
+        return response()->view('see_transaction',[
+            'purchases' => $purchases,
+            'sales' => $sales]);
     }
 }
