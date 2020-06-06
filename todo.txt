@@ -1,7 +1,5 @@
 Ivan:
-1. create another field in user and register form (secret questions/answer)
-2. Recover password by asking the secret question
-3. modify change password form (auth->usual, guest->change)
+
 
 ??. antes de entregar, comprobar nombres de variables, indentacion, quitar cosas que sobran.
 
@@ -9,6 +7,10 @@ Alberto:
 ??. Home page WIP (Alberto).
 
 
-Fran:
+1. form to change account details
+2. add balance to accounts
+3. subtract money from balance on purchase
+4. create transactions view
+
 ??. Visual.
 ??. Documentacion.
