@@ -83,10 +83,10 @@ class TransactionsController extends Controller {
                 $seller_id = User::where('username', $transaction->seller)->get('id');
                 $seller = User::find($seller_id[0]['id']);
                 $card_id = Card::where("name", $transaction->card_name)->get('id');
-                $card = User::find($card_id[0]['id']);
+                $card = Card::find($card_id[0]['id']);
                 $cardlist = CardList::find($transaction->card_id);
 
-                //Updating Seller                
+                // Updating Seller                
                 $seller->balance = $seller->balance + ($transaction->price_unit * $transaction->t_quantity);
                 $seller->save();
 
@@ -94,16 +94,16 @@ class TransactionsController extends Controller {
                 $buyer->balance = $buyer->balance - ($transaction->price_unit * $transaction->t_quantity);
                 $buyer->save();
 
-                //Updating Transactions
+                // Updating Transactions
                 $transaction->status = "sold";
                 $transaction->date_paid = date("Y-m-d");
                 $transaction->save();
                 
-                //Updating Card
+                // Updating Card
                 $card->quantity = $card->quantity - $transaction->t_quantity;
                 $card->save();
                 
-                //Updating Card List
+                // Updating or Deleting Card List
                 if ($cardlist->quantity == $transaction->t_quantity) {
                     $cardlist->delete();
                 } else {

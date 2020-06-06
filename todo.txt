@@ -1,13 +1,10 @@
 Ivan:
-4. create user details view
-
 ??. antes de entregar, comprobar nombres de variables, indentacion, quitar cosas que sobran.
 
 Alberto:
 ??. Home page WIP (Alberto).
 3. create transactions view
 
-
+Others:
 ??. Visual.
 ??. Documentacion.
-- when a card goes to 0, delete it
