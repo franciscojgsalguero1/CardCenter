@@ -19,7 +19,7 @@ class HomeController extends Controller {
         return view('auth.changePassword');
     }
 
-    public function changePassword(Request $request){
+    public function changePassword(Request $request){ 
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
             return redirect()->back()->with("error","Your current password does not match with the password you provided. Please try again.");
@@ -41,5 +41,25 @@ class HomeController extends Controller {
         $user->save();
 
         return redirect()->back()->with("success","Password changed successfully!");
+    }
+
+    public function showUpdateAccountDetailsForm() {
+        return view('updateAccountDetails');
+    }
+
+    public function updateAccountDetails(Request $request) {
+        $user = Auth::user();
+        $user->street = $request->get('street');
+        $user->street_num = $request->get('street_num');
+        $user->post_code = $request->get('post_code');
+        $user->city = $request->get('city');
+        $user->country = $request->get('country');
+        $user->phone_number = $request->get('phone_number');
+        $user->iban = $request->get('iban');
+        $user->bicswift = $request->get('bicswift');
+        $user->bank_name = $request->get('bank_name');
+        $user->save();
+
+        return redirect()->route('main');
     }
 }

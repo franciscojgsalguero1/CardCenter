@@ -41,6 +41,7 @@
                 @endif
                 @auth         
                     <a href="{{url('/user/changePassword/')}}" class="w3-bar-item w3-button">Change Password</a>
+                    <a href="{{url('/user/updateAccountDetails/')}}"class="w3-bar-item w3-button">Update Account Details</a>
                     @if (Auth::user()->type == "admin")
                         <a href="{{url('add/')}}" class="w3-bar-item w3-button">Add carts</a>
                     @endif
