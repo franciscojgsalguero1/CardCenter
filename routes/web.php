@@ -26,13 +26,15 @@ Route::get('/transaction_add/{cart}/{cantidad}/{transaccion}', "main\Transaction
 Route::get('/confirm/button_buy_all/{name}', "main\TransactionsController@buyAllItems");
 
 
-/* User */
-Route::get('/user/changePassword', "HomeController@showChangePasswordForm");
-Route::post('/user/changePassword','HomeController@changePassword')->name('changePassword');
-Route::get('/user/recoverPassword', "RecoverPasswordController@showRecoverPasswordForm");
-Route::post('/user/recoverPassword', "RecoverPasswordController@recoverPassword")->name('recoverPassword');
-Route::get('/user/updateAccountDetails', "HomeController@showUpdateAccountDetailsForm");
-Route::post('/user/updateAccountDetails', "HomeController@updateAccountDetails")->name('updateAccountDetails');
-Route::get('/user/showDetails', "HomeController@showDetails")->name("showDetails");
-Route::get('/user/purchases', "HomeController@purchases")->name('purchases');
-Route::get('/user/sales', "HomeController@sales")->name('sales');
+/* User */ 
+Route::get('/user/changePassword', "main\UserController@showChangePasswordForm");
+Route::post('/user/changePassword','main\UserController@changePassword')->name('changePassword');
+Route::get('/user/recoverPassword', "main\UserController@showRecoverPasswordForm");
+Route::post('/user/recoverPassword', "main\UserController@recoverPassword")->name('recoverPassword');
+Route::get('/user/updateAccountDetails', "main\UserController@showUpdateAccountDetailsForm");
+Route::post('/user/updateAccountDetails', "main\UserController@updateAccountDetails")->name('updateAccountDetails');
+Route::get('/user/showDetails', "main\UserController@showDetails")->name("showDetails");
+Route::get('/user/purchases', "main\UserController@purchases")->name('purchases');
+Route::get('/user/sales', "main\UserController@sales")->name('sales');
+Route::get('/user/userList', "main\UserController@userList")->name('userList');
+Route::get('/user/delete/{id}', "main\UserController@deleteUser");

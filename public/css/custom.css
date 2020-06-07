@@ -15,10 +15,7 @@
   margin-right: 80%;
   color: white;
 }
-th {
-  background-color: #012169;
-  color: white;
-}
+
 h2, h1, label {
   text-align: center;
   color: black;
@@ -138,11 +135,34 @@ table {
 
 td, th {
   border: 1px solid #dddddd;
-  text-align: left;
   padding: 8px;
+}
+
+th {
+  background-color: #012169;
+  color: white;
   text-align: center;
 }
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+.centertable {
+  text-align: center;
+}
+
+.flex-container-cart {
+  display: flex;
+  align-items: stretch;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.flex-container-cart > div {
+  background-color: ;
+  text-align: center;
+}
+
+.type {
+  width: 200px;
 }

@@ -2,7 +2,17 @@
 
 @section('title', "Cardcenter - Cart")
 @section('content')
-<div class="flex-container">
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+<div class="flex-container-cart">
 	<table id="info-card">
 		<th>Card Name</th>
 		<th>Seller</th>
@@ -53,13 +63,13 @@
 			@php($total_compra += $card->t_quantity * $card->price_unit)
 			@php($cantidad_total += $card->t_quantity)
 			<tr>
-				<td>{{$card->card_name}}</td>
-				<td>{{$card->seller}}</td>
-				<td>
-					<span><i  title="{{$card->condition}}" class="{{$condition}}"></i></span>
-					<img class="flag" src="{{$flag}}">
+				<td class="centertable"><a href="{{url('view/'.$card->card_id)}}">{{$card->card_name}}</a></td>
+				<td class="centertable">{{$card->seller}}</td>
+				<td class="centertable">
+					<span><i title="{{$card->condition}}" class="{{$condition}}"></i></span>
+					<img title="{{$card->language}}" class="flag" src="{{$flag}}">
 				</td>
-				<td>
+				<td class="centertable">
 					<span>{{$card->price_unit}}€</span>
 					<select id="card_counter">
 						@for ($i=1; $i <= $card->t_quantity; $i++)
@@ -71,8 +81,12 @@
 						@endfor
 					</select>
 				</td>
-				<td>
-					<button class="btn"><a id="button_delete" href="{{url('transaction_delete/'.$card->id.'/1')}}"><i class="fas fa-trash-alt"></i></a></button>
+				<td class="centertable">
+					<button class="btn">
+						<a id="button_delete" href="{{url('transaction_delete/'.$card->id.'/'.$card->t_quantity)}}">
+							<i class="fas fa-trash-alt"></i>
+						</a>
+					</button>
 				</td>
 			</tr>
 		@endforeach

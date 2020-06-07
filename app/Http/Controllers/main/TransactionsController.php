@@ -61,7 +61,7 @@ class TransactionsController extends Controller {
     public function transactionToBuy($name){   
         $transactions = Transactions::where('buyer', $name)->
                         where('status', 'added')->get();
-        return response()->view('transactions', ['transactions' => $transactions]);
+        return response()->view('cart', ['transactions' => $transactions]);
     }
 
     public function buyAllItems($name) {
@@ -111,12 +111,15 @@ class TransactionsController extends Controller {
                     $cardlist->save();
                 }
             }
+
+            return redirect()->back()->with('success', "Cards have been bought.");
+        } else {
+            return redirect()->back()->with("error", "Insufficient balance.");
         }
 
-        return redirect()->back();
     }
 
-    public function deleteTransaction($id, $amount){
+    public function deleteTransaction($id, $amount) {
         $transactions = Transactions::find($id);
         if ($transactions->t_quantity == $amount) {
             $transactions->delete();

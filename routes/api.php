@@ -23,3 +23,8 @@ Route::group(["namespace" => "main"], function() {
 	Route::apiResource('clist', 'ListController');
 	Route::get('clist/restore/{id}', 'ListController@restore');
 });
+
+Route::group(["namespace" => "main"], function() {
+	Route::apiResource('user', 'UserController');
+	Route::get('user/restore/{id}', 'UserController@restore');
+});

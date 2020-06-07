@@ -141,7 +141,7 @@
 									<td>{{$item->seller}}</td>
 									<td>
 										<span><i  title="{{$item->condition}}" class="{{$condition}}"></i></span>
-										<img class="flag" src="{{$flag}}">
+										<img title="{{$item->language}}" class="flag" src="{{$flag}}">
 										@if ($item->fullart == 1)
 											<i class="fab fa-foursquare" data-toggle="tooltip" data-placement="bottom" title="Full art"></i>
 										@endif
@@ -349,36 +349,4 @@
 		</div>
 	</div>
 </div>
-
-<script>
-	function showEdit(id) {
-		if (document.getElementById("editDiv"+id).style.display == "block") {
-			document.getElementById("editDiv"+id).style.display = "none";
-		} else {
-			document.getElementById("editDiv"+id).style.display = "block";
-		}
-	}
-
-	function openTab(evt, tab) {
-		var i, tabcontent, tablinks;
-		tabcontent = document.getElementsByClassName("tabcontent");
-		for (i = 0; i < tabcontent.length; i++) {
-			tabcontent[i].style.display = "none";
-		}
-		tablinks = document.getElementsByClassName("tablinks");
-		for (i = 0; i < tablinks.length; i++) {
-			tablinks[i].className = tablinks[i].className.replace(" active", "");
-		}
-		document.getElementById(tab).style.display = "block";
-		evt.currentTarget.className += " active";
-	}
-
-	function showBuy(id) {
-		if (document.getElementById("buy"+id).style.display == "block") {
-			document.getElementById("buy"+id).style.display = "none";
-		} else {
-			document.getElementById("buy"+id).style.display = "block";
-		}
-	}
-</script>
 @stop

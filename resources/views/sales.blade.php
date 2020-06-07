@@ -55,12 +55,14 @@
 						@break
 				@endswitch
 				<tr>
-					<td><a href="{{url('view/'.$sale->card_id)}}">{{$sale->card_name}}</a></td>
-					<td>{{$sale->buyer}}</td>
-					<td><span><i  title="{{$sale->condition}}" class="{{$condition}}"></i></span>
-						<img class="flag" src="{{$flag}}"></td>
-					<td>{{$sale->price_unit}}€</td>
-					<td>{{$sale->t_quantity}}</td>
+					<td class="centertable"><a href="{{url('view/'.$sale->card_id)}}">{{$sale->card_name}}</a></td>
+					<td class="centertable">{{$sale->buyer}}</td>
+					<td class="centertable">
+						<span><i title="{{$sale->condition}}" class="{{$condition}}"></i></span>
+						<img title="{{$sale->language}}" class="flag" src="{{$flag}}">
+					</td>
+					<td class="centertable">{{$sale->price_unit}}€</td>
+					<td class="centertable">{{$sale->t_quantity}}</td>
 				</tr>
 			@endforeach
 		</table>

@@ -56,8 +56,10 @@
 				<tr>
 					<td><a href="{{url('view/'.$purchase->card_id)}}">{{$purchase->card_name}}</a></td>
 					<td>{{$purchase->seller}}</td>
-					<td><span><i  title="{{$purchase->condition}}" class="{{$condition}}"></i></span>
-						<img class="flag" src="{{$flag}}"></td>
+					<td class="centertable">
+						<span><i title="{{$purchase->condition}}" class="{{$condition}}"></i></span>
+						<img title="{{$purchase->language}}" class="flag" src="{{$flag}}">
+					</td>
 					<td>{{$purchase->price_unit}}€</td>
 					<td>{{$purchase->t_quantity}}</td>
 				</tr>

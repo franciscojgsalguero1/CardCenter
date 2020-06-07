@@ -36,18 +36,17 @@
                     Close &times;
                 </button>
                 <a href="{{url('/')}}" class="w3-bar-item w3-button">Home</a>
+                @auth
+                    @if (Auth::user()->type == "Admin")
+                        <a href="{{route('userList')}}" class="w3-bar-item w3-button">Users</a>
+                        <a href="{{url('add/')}}" class="w3-bar-item w3-button">Add cards</a>
+                    @endif
+                @endauth
                 @if ($game ?? '')
                     <a href="{{url('view_game/'.$game)}}" class="w3-bar-item w3-button">Card List</a>
                 @else 
                     <a href="{{url('view_game/Force of Will')}}" class="w3-bar-item w3-button">Card List</a>
                 @endif
-                @auth         
-                    <a href="{{url('/user/changePassword/')}}" class="w3-bar-item w3-button">Change Password</a>
-                    <a href="{{url('/user/updateAccountDetails/')}}"class="w3-bar-item w3-button">Update Account Details</a>
-                    @if (Auth::user()->type == "admin")
-                        <a href="{{url('add/')}}" class="w3-bar-item w3-button">Add carts</a>
-                    @endif
-                @endauth
                 @guest
                     <a href="{{url('/user/recoverPassword/')}}" class="w3-bar-item w3-button">Recover Password</a>
                 @endguest
@@ -94,9 +93,11 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="pruebas">
+                            <a class="dropdown-item" href="{{ route('sales') }}">{{ __('Sales')}}</a>
+                            <a class="dropdown-item" href="{{ route('purchases') }}">{{ __('Purchases')}}</a>
                             <a class="dropdown-item" href="{{ route('showDetails') }}">{{ __('User Details')}}</a>
-                             <a class="dropdown-item" href="{{ route('purchases') }}">{{ __('Purchases')}}</a>
-                             <a class="dropdown-item" href="{{ route('sales') }}">{{ __('Sales')}}</a>
+                            <a class="dropdown-item" href="{{url('/user/updateAccountDetails/')}}">Update User Details</a>
+                            <a class="dropdown-item" href="{{url('/user/changePassword/')}}">Change Password</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>

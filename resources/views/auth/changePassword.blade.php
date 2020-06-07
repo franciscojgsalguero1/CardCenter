@@ -13,11 +13,11 @@
                             {{ session('error') }}
                         </div>
                     @endif
-                        @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <form class="form-horizontal" method="POST" action="{{ route('changePassword') }}">
                         {{ csrf_field() }}
 
