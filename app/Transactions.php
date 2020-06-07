@@ -14,6 +14,7 @@ class Transactions extends Model {
         'language',
         'condition',
         'card_id',
+        'cardlist_id',
         'buyer',
         'status',
         't_quantity',

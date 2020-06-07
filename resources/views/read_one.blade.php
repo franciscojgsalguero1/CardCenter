@@ -1,6 +1,7 @@
 @extends('layouts.app')
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+@section('title', "Cardcenter - $card->name")
 @section('content')
 
 <h1>{{$card->name}} </h1>
@@ -48,6 +49,7 @@
 				<form action="{{url('api/clist')}}" method="post">
 					<input type="hidden" name="name" value="{{$card->name}}">
 					<input type="hidden" name="seller" value="{{Auth::user()->username}}">
+					<input type="hidden" name="card_id" value="{{$card->id}}">
 					<label for="qtty">Quantity</label>
 					<input type="number" name="quantity" value="1" min="1" id="qtty" required><br>
 					<label for="lng">Language</label>
@@ -290,7 +292,8 @@
 											<input type="hidden" value="{{$item->name}}" name="card_name">
 											<input type="hidden" value="{{$item->language}}" name="language">
 											<input type="hidden" value="{{$item->condition}}" name="condition">
-											<input type="hidden" value="{{$item->id}}" name="card_id">
+											<input type="hidden" value="{{$item->card_id}}" name="card_id">
+											<input type="hidden" value="{{$item->id}}" name="cardlist_id">
 											<input type="hidden" value="{{$item->seller}}" name="seller">
 											<input type="hidden" value="{{Auth::user()->username}}" name="buyer">
 											<select name="t_quantity" >

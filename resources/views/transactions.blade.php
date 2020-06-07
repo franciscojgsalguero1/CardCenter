@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', "Cardcenter - Cart")
 @section('content')
 <div class="flex-container">
 	<table id="info-card">
@@ -12,43 +13,43 @@
 		@php ($cantidad_total=0)
 		@foreach($transactions as $card)
 			@switch($card->language)
-									@case("English")
-										@php ($flag = "https://www.countryflags.io/gb/flat/64.png")
-										@break
-									@case("German")
-										@php ($flag = "https://www.countryflags.io/de/flat/64.png")
-										@break
-									@case("French")
-										@php ($flag = "https://www.countryflags.io/fr/flat/64.png")
-										@break
-									@case("Spanish")
-										@php ($flag = "https://www.countryflags.io/es/flat/64.png")
-										@break
-									@case("Italian")
-										@php ($flag = "https://www.countryflags.io/it/flat/64.png")
-										@break
-									@case("Japanese")
-										@php ($flag = "https://www.countryflags.io/jp/flat/64.png")
-										@break
-									@case("Chinese")
-										@php ($flag = "https://www.countryflags.io/cn/flat/64.png")
-										@break
-								@endswitch
+				@case("English")
+					@php ($flag = "https://www.countryflags.io/gb/flat/64.png")
+					@break
+				@case("German")
+					@php ($flag = "https://www.countryflags.io/de/flat/64.png")
+					@break
+				@case("French")
+					@php ($flag = "https://www.countryflags.io/fr/flat/64.png")
+					@break
+				@case("Spanish")
+					@php ($flag = "https://www.countryflags.io/es/flat/64.png")
+					@break
+				@case("Italian")
+					@php ($flag = "https://www.countryflags.io/it/flat/64.png")
+					@break
+				@case("Japanese")
+					@php ($flag = "https://www.countryflags.io/jp/flat/64.png")
+					@break
+				@case("Chinese")
+					@php ($flag = "https://www.countryflags.io/cn/flat/64.png")
+					@break
+			@endswitch
 
-								@switch($card->condition)
-									@case("Near Mint")
-										@php ($condition = "fas fa-laugh-beam text-success")
-										@break
-									@case("Excellent")
-										@php ($condition = "fas fa-smile-beam text-success")
-										@break
-									@case("Good")
-										@php ($condition = "fas fa-smile-beam text-dark")
-										@break
-									@case("Poor")
-										@php ($condition = "fas fa-sad-cry text-danger")
-										@break
-							@endswitch
+			@switch($card->condition)
+				@case("Near Mint")
+					@php ($condition = "fas fa-laugh-beam text-success")
+					@break
+				@case("Excellent")
+					@php ($condition = "fas fa-smile-beam text-success")
+					@break
+				@case("Good")
+					@php ($condition = "fas fa-smile-beam text-dark")
+					@break
+				@case("Poor")
+					@php ($condition = "fas fa-sad-cry text-danger")
+					@break
+			@endswitch
 			@php($total_compra += $card->t_quantity * $card->price_unit)
 			@php($cantidad_total += $card->t_quantity)
 			<tr>
@@ -77,7 +78,7 @@
 		@endforeach
 	</table>
 </div>
-	<div class="text-center" id="buy">
+<div class="text-center" id="buy">
 	<h2>total {{$total_compra}}€ </h2>
 	<h2>total cartas {{$cantidad_total}}</h2>
 	<button class="btn"><a href="{{url('/confirm/button_buy_all/'.Auth::user()->username)}}">BUY ALL</a></button>

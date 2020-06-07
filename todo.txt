@@ -7,3 +7,7 @@ Alberto:
 Others:
 ??. Visual.
 ??. Documentacion.
+
+1. vista de lista de usuarios (y poder editarlos)
+2. read one user
+3. anadir links al usuario

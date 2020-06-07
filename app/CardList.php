@@ -11,6 +11,7 @@ class CardList extends Model {
     protected $fillable = [
         'name',
         'seller',
+        'card_id',
         'language',
         'price',
         'quantity',

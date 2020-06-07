@@ -1,8 +1,8 @@
 @extends('layouts.app', [
-    'game' => $id ?? '',
-    'transactions' => $transactions ?? ''
+        'game' => $id ?? '',
+        'transactions' => $transactions ?? ''
     ])
-
+@section('title', "Cardcenter - Home")
 @section('content')
 <div id="demo" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->

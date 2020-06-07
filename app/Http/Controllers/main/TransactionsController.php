@@ -84,7 +84,7 @@ class TransactionsController extends Controller {
                 $seller = User::find($seller_id[0]['id']);
                 $card_id = Card::where("name", $transaction->card_name)->get('id');
                 $card = Card::find($card_id[0]['id']);
-                $cardlist = CardList::find($transaction->card_id);
+                $cardlist = CardList::find($transaction->cardlist_id);
 
                 // Updating Seller                
                 $seller->balance = $seller->balance + ($transaction->price_unit * $transaction->t_quantity);

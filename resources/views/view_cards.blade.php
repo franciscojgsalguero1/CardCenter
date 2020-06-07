@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', "Cardcenter - Card List")
 @section('content')
 <div class="flex-container">
     <div>
