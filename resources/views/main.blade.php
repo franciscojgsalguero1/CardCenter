@@ -71,7 +71,7 @@
 </div>
 <div class="flex-container-main" style="margin:0">
     <div>
-        <h1 class="titulos">Last Add</h1>
+        <h1 class="titulos">Recently Added</h1>
     </div>
     <div>
         <h1 class="titulos">Best Price</h1>
