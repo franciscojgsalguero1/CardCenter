@@ -4,8 +4,9 @@
 @section('content')
 <h2>Purchases</h2>
 <div class="col text-center">
-		<button ><h2><a href="{{route('purchases')}}" >Purchases</a></h2></button> - <button><h2><a href="{{route('sales')}}">Sales</a></h2></button>
-	</div>
+	<button ><h2><a href="{{route('purchases')}}" >Purchases</a></h2></button> - <button><h2><a href="{{route('sales')}}">Sales</a></h2></button>
+</div>
+<br>
 <div class="flex-container">
 	<div>
 		<table id="info-card">

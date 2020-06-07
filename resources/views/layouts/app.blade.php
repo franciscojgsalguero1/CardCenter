@@ -60,7 +60,7 @@
             <div class="dropdown">
                 <button class="dropbtn" onclick="gameMenu()">Game</button>
                 <div id="dropdown-content">
-                    <a href="{{url('/Force of Will')}}">Force of will</a>
+                    <a href="{{url('/Force of Will')}}">Force of Will</a>
                     <a href="{{url('/Magic The Gathering')}}">Magic The Gathering</a>
                     <a href="{{url('/Yu-Gi-Oh')}}">Yu-Gi-Oh</a>
                     <a href="{{url('/Pokémon')}}">Pokémon</a>

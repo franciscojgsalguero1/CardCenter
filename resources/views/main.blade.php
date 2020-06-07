@@ -117,6 +117,10 @@
 <div class="flex-container-main" style="margin-top:0">
     <div>
         <table>
+            <th>#</th>
+            <th>Link</th>
+            <th>Card Name</th>
+            <th>Expansion</th>
             @php ($i=0)
             @foreach($first_cards as $item)
             @php($i++)
@@ -133,6 +137,10 @@
     </div >
     <div>
         <table>
+            <th>#</th>
+            <th>Link</th>
+            <th>Card Name</th>
+            <th>Price</th>
             @php ($j=0)
 
             @foreach($cardlist as $item)
