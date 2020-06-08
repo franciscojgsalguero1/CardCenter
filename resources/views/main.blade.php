@@ -1,8 +1,14 @@
 @extends('layouts.app', [
         'game' => $id ?? '',
         'transactions' => $transactions ?? ''
-    ])
-@section('title', "Cardcenter - Home")
+])
+
+@if (isset($id))
+    @section('title', "Cardcenter - $id")
+@else
+    @section('title', "Cardcenter - Force of Will")
+@endif
+
 @section('content')
 <div id="demo" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -96,21 +102,21 @@
     <div class="flex-container-main">
         @php($j=0)
         @foreach ($cardlist as $item)
-        @if($j<3)
-        <div>
-            @foreach($all_cards as $img)
-            @if($item->name == $img->name)
-            <a href="{{url('view/'.$img->id)}}"><img src="{{$img->src}}" class="img-main"></a>
-            @endif
-            @endforeach
-            @php($j++)
-            <br>
-            <div class="nombre">
-                <b>{{$item->name}}</b>
+            @if($j<3)
+                <div>
+                    @foreach($all_cards as $img)
+                        @if($item->name == $img->name)
+                            <a href="{{url('view/'.$img->id)}}"><img src="{{$img->src}}" class="img-main"></a>
+                        @endif
+                    @endforeach
+                    @php($j++)
+                    <br>
+                    <div class="nombre">
+                        <b>{{$item->name}}</b>
+                    </div>
+                    <b>{{$item->price}}€ / unit</b>
+                @endif
             </div>
-            <b>{{$item->price}}€ / unit</b>
-            @endif
-        </div>
         @endforeach
     </div>
 </div>
@@ -123,15 +129,15 @@
             <th>Expansion</th>
             @php ($i=0)
             @foreach($first_cards as $item)
-            @php($i++)
-            @if($i>3)
-            <tr>
-                <td>{{$i}}</td>
-                <td><a href="{{url('view/'.$item->id)}}" ><i class="fas fa-images"></i></a></td>
-                <td>{{$item->name}}</td>
-                <td>{{$item->expansion}}-{{$item->number}} ({{$item->rarity}})</td>
-            </tr>
-            @endif
+                @php($i++)
+                @if($i>3)
+                    <tr>
+                        <td>{{$i}}</td>
+                        <td><a href="{{url('view/'.$item->id)}}" ><i class="fas fa-images"></i></a></td>
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->expansion}}-{{$item->number}} ({{$item->rarity}})</td>
+                    </tr>
+                @endif
             @endforeach
         </table>
     </div >
@@ -144,22 +150,22 @@
             @php ($j=0)
 
             @foreach($cardlist as $item)
-            <tr>
-                @php($j++)
-                @if($j>3)
-                <td>{{$j}}</td>
-                @foreach($all_cards as $img)
-                @if($item->name == $img->name)
-                <td>
-                    <a href="{{url('view/'.$img->id)}}"><i class="fas fa-images" ></i></a>
-                </td>
-                @endif
-                @endforeach     
-                <td>{{$item->name}}</td>
-                <td>{{$item->price}}€ / unit</td>
+                <tr>
+                    @php($j++)
+                    @if($j>3)
+                        <td>{{$j}}</td>
+                            @foreach($all_cards as $img)
+                                @if($item->name == $img->name)
+                                    <td>
+                                        <a href="{{url('view/'.$img->id)}}"><i class="fas fa-images" ></i></a>
+                                    </td>
+                                @endif
+                            @endforeach     
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->price}}€ / unit</td>
+                    @endif
+                @endforeach
             </tr>
-            @endif
-            @endforeach
         </table>
     </div>
 </div>

@@ -9,7 +9,6 @@ use App\CardList;
 
 class CardController extends Controller {
     private $html = "text/html";
-    private $json = "javascript/json";
 
     /*
     * CRUD
@@ -48,61 +47,61 @@ class CardController extends Controller {
     public function view() {
         $cards = Card::all();
 
-        $response = response()->view('view_cards', ['data' => $cards], 200);
+        $response = response()->view('viewCards', ['data' => $cards], 200);
         $response->header("Content-Type", $this->html);
 
         return $response;
     }
 
-    public function viewjuego($juego) {
-        $cards = Card::all()->where('game', $juego);
+    public function viewGame($game) {
+        $cards = Card::all()->where('game', $game);
 
-        $response = response()->view('view_cards', ['data' => $cards], 200);
+        $response = response()->view('viewCards', ['data' => $cards], 200);
         $response->header("Content-Type", $this->html);
 
         return $response;
     }
 
-    public function add_cards() {
-        return response()->view('add_cards', ['cards' => Card::all()]);
+    public function addCards() {
+        return response()->view('addCards', ['cards' => Card::all()]);
     }
     
-    public function main(){
-        $salida =[];
-        $carta = Card::all();
-        $venta = CardList::all();
-        foreach ($venta as $nombre => $valor) {
-            foreach ($carta as $nombre => $value) {
-                if ($valor['name']==$value['name']){
-                    if ($value['game']=='Force of Will'){
-                        array_push($salida, $valor);
+    public function main() {
+        $output = [];
+        $card = Card::all();
+        $sale = CardList::all();
+        foreach ($sale as $nombre => $valor) {
+            foreach ($card as $nombre => $value) {
+                if ($valor['name'] == $value['name']) {
+                    if ($value['game'] == 'Force of Will'){
+                        array_push($output, $valor);
                     }
                 }
             }
         }
-        return response()->view('main',[
+        return response()->view('main', [
             'first_cards' => Card::all()->where('game', 'Force of Will')->sortBy('updated_at')->take(10),
-            'cardlist' => $salida,
+            'cardlist' => $output,
             'all_cards' => Card::all() 
         ]); 
     }
 
-    public function anotherGame($id){
-        $salida =[];
-        $carta = Card::all();
-        $venta = CardList::all();
-        foreach ($venta as $nombre => $valor) {
-            foreach ($carta as $nombre => $value) {
-                if ($valor['name']==$value['name']){
-                    if ($value['game']==$id){
-                        array_push($salida, $valor);
+    public function anotherGame($id) {
+        $output = [];
+        $card = Card::all();
+        $sale = CardList::all();
+        foreach ($sale as $nombre => $valor) {
+            foreach ($card as $nombre => $value) {
+                if ($valor['name'] == $value['name']) {
+                    if ($value['game'] == $id){
+                        array_push($output, $valor);
                     }
                 }
             }
         }
-        return response()->view('main',[
+        return response()->view('main', [
             'first_cards' => Card::all()->where('game',$id)->sortBy('updated_at')->take(10),
-            'cardlist' => $salida,
+            'cardlist' => $output,
             'all_cards' => Card::all(),
             'id' => $id
         ]); 

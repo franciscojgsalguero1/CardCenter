@@ -26,7 +26,7 @@ class ListController extends Controller {
         $this->updateCardQuantity($name, $card);
         $this->updateCardPriceFrom($name, $card);
 
-        return redirect()->action('main\ListController@read_one', ['id' => $card]);
+        return redirect()->action('main\ListController@readOne', ['id' => $card]);
     }
 
     private function updateCardQuantity($name, $card) {
@@ -45,12 +45,18 @@ class ListController extends Controller {
         $prices = array();
         $list = CardList::where('name', $name)->get();
 
-        foreach ($list as $item) {
-            array_push($prices, $item->price);
+
+        if (count($list) > 0) {
+            foreach ($list as $item) {
+                array_push($prices, $item->price);
+            }
+
+            sort($prices);
+            $card->price_from = $prices[0];
+        } else {
+            $card->price_from = 0;
         }
 
-        sort($prices);
-        $card->price_from = $prices[0];
         $card->save();
     }
 
@@ -98,7 +104,7 @@ class ListController extends Controller {
         $this->updateCardQuantity($request->input('name'), $card);
         $this->updateCardPriceFrom($request->input('name'), $card);
 
-        return redirect()->action('main\ListController@read_one', ['id' => $card]);
+        return redirect()->action('main\ListController@readOne', ['id' => $card]);
     }
 
     public function destroy($id) {
@@ -114,10 +120,10 @@ class ListController extends Controller {
     * Controller Methods
     */
 
-    public function read_one($id) {
+    public function readOne($id) {
         $name = Card::find($id)->name;
 
-        return response()->view('read_one', [
+        return response()->view('readOne', [
             'card' => Card::find($id),
             'clist' => CardList::where('name', $name)->get()
         ]);
@@ -133,6 +139,6 @@ class ListController extends Controller {
         $this->updateCardQuantity($name, $card);
         $this->updateCardPriceFrom($name, $card);
 
-        return redirect()->action('main\ListController@read_one', ['id' => $card]);
+        return redirect()->action('main\ListController@readOne', ['id' => $card]);
     }
 }

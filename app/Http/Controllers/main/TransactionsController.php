@@ -27,7 +27,7 @@ class TransactionsController extends Controller {
         $transactions = Transactions::where('buyer', $name)->
                         where('status', 'added')->get();
 
-        return redirect()->action('main\ListController@read_one', [
+        return redirect()->action('main\ListController@readOne', [
             'id' => $card,
             'transactions' => $transactions
         ]);
@@ -58,7 +58,7 @@ class TransactionsController extends Controller {
     * Controller Methods
     */
 
-    public function transactionToBuy($name){   
+    public function transactionToBuy($name) {   
         $transactions = Transactions::where('buyer', $name)->
                         where('status', 'added')->get();
         return response()->view('cart', ['transactions' => $transactions]);

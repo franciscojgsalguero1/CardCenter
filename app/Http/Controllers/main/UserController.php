@@ -60,7 +60,7 @@ class UserController extends Controller {
             return redirect()->back()->with("error","Your current password does not match with the password you provided. Please try again.");
         }
 
-        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+        if (strcmp($request->get('current-password'), $request->get('new-password')) == 0) {
             //Current password and new password are same
             return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
         }
@@ -124,20 +124,18 @@ class UserController extends Controller {
         return view('showDetails');
     }
 
-    public function purchases(){
+    public function purchases() {
         $user = Auth::user()->username;
         $purchases = Transactions::where('buyer', $user)->where('status', 'sold')->get();
        
-        return response()->view('purchases',[
-            'purchases' => $purchases]);
+        return response()->view('purchases', ['purchases' => $purchases]);
     }
 
-    public function sales(){
+    public function sales() {
         $user = Auth::user()->username;
         $sales = Transactions::where('seller', $user)->where('status', 'sold')->get();
 
-        return response()->view('sales',[
-            'sales' => $sales]);
+        return response()->view('sales', ['sales' => $sales]);
     }
 
     public function userList() {

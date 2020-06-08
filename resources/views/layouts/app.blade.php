@@ -43,9 +43,9 @@
                     @endif
                 @endauth
                 @if ($game ?? '')
-                    <a href="{{url('view_game/'.$game)}}" class="w3-bar-item w3-button">Card List</a>
+                    <a href="{{url('viewGame/'.$game)}}" class="w3-bar-item w3-button">Card List</a>
                 @else 
-                    <a href="{{url('view_game/Force of Will')}}" class="w3-bar-item w3-button">Card List</a>
+                    <a href="{{url('viewGame/Force of Will')}}" class="w3-bar-item w3-button">Card List</a>
                 @endif
                 @guest
                     <a href="{{url('/user/recoverPassword/')}}" class="w3-bar-item w3-button">Recover Password</a>
@@ -88,7 +88,7 @@
                             @endif
                             <span class="caret"></span>
                         </a>
-                        <a href="{{url('/cart_view', Auth::user()->username)}}">
+                        <a href="{{url('/cartView', Auth::user()->username)}}">
                             <i class="fas fa-shopping-cart"></i>
                         </a>
 

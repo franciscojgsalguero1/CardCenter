@@ -9,16 +9,16 @@ Route::get('/', function () {
 Auth::routes();
 
 /* Cards */
-Route::get('/add/', "main\CardController@add_cards");
-Route::get('/view_game/{juego}', 'main\CardController@viewjuego');
+Route::get('/add/', "main\CardController@addCards");
+Route::get('/viewGame/{juego}', 'main\CardController@viewGame');
 Route::get('/view/', 'main\CardController@view');
 
 /* Card List */
-Route::get('/view/{id}/', "main\ListController@read_one");
+Route::get('/view/{id}/', "main\ListController@readOne");
 Route::get('/delete/{id}/', "main\ListController@deleteList");
 
 /* Transactions */
-Route::get('/cart_view/{user}', "main\TransactionsController@transactionToBuy");
+Route::get('/cartView/{user}', "main\TransactionsController@transactionToBuy");
 Route::get('/', "main\CardController@main")->name('main');
 Route::get('/{id}', "main\CardController@anotherGame");
 Route::get('/transaction_delete/{id}/{count}' ,"main\TransactionsController@deleteTransaction")->name('compra');
