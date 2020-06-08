@@ -1,0 +1,9 @@
+Ivan:
+??. antes de entregar, comprobar nombres de variables, indentacion, quitar cosas que sobran.
+
+Alberto:
+??. Home page WIP (Alberto).
+
+Others:
+??. Visual.
+??. Documentacion.
