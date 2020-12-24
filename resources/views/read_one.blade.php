@@ -304,9 +304,9 @@
 								<td>
 									<span>{{$item->price}}€</span>
 									<span>{{$item->quantity}}</span>
-									<button class="btn" onclick="showBuy({{$item->id}})">
+									<a href='cart/add/'.{$item}><button class="btn" onclick="#">
 										<i class="fas fa-cart-plus"></i>
-									</button>
+									</button></a>
 								</td>
 							@endguest
 						</tr>

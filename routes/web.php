@@ -38,7 +38,7 @@ Route::get('cart/show', [
 	//'uses' => 'HomeController@session'
 ]);
 
-Route::get('cart/add/{product}', [
+Route::get('cart/add/{id}', [
 	'as' => 'cart-add',
 	'uses' => 'CartController@add']
 );

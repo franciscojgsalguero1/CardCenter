@@ -1,5 +1,7 @@
 <?php
 
+use Melihovv\ShoppingCart\Facades\ShoppingCart as Cart;
+
 return [
 
     /*

@@ -25,15 +25,18 @@ class CartController extends Controller
 	}
 	// Add item
 	public function add(Card $card)
-	{
-		$cart = \Session::get('cart');
-		$card->quantity = 1;
-		$cart[$card->id] = $card;
-		\Session::put('cart', $cart);
+    {
+        $cartItem = $card;
+        $uniqueId = $cartItem->getUniqueId();
 
-		return redirect()->route('cart-show');
-	}
+        if ($this->content->has($uniqueId)) {
+            $cartItem->quantity += $this->content->get($uniqueId)->quantity;
+        }
 
+        $this->content->put($uniqueId, $cartItem);
+
+        return $cartItem;
+    }
 	// Delete item
 
 	// Update item
